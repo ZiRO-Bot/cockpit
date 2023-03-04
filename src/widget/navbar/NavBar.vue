@@ -1,17 +1,12 @@
 <script setup>
 import { reactive, toRef, ref, computed, getCurrentInstance, onMounted } from 'vue'
 import { useStore } from 'vuex'
-import axios from 'axios';
+import axios from 'axios'
 
-const props = defineProps(["user"])
-
-const store = useStore()
+// Meta
 const app = getCurrentInstance()
-
-const userInfo = toRef(props, "user")
-const isLoggedIn = computed(() => store.getters.isLoggedIn)
-console.log(isLoggedIn)
-const loginUrl = ref(app.appContext.config.globalProperties.$apiURL + "/api/login")
+const store = useStore()
+const props = defineProps(["user"])
 
 function userAvatar(user) {
     return ""
@@ -28,6 +23,11 @@ async function logout() {
         }
     });
 }
+
+// Data
+const userInfo = toRef(props, "user")
+const isLoggedIn = computed(() => store.getters.isLoggedIn)
+const loginUrl = ref(app.appContext.config.globalProperties.$apiURL + "/api/login")
 </script>
 
 <template>

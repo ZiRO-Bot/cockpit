@@ -4,27 +4,17 @@ import { useStore } from 'vuex'
 import axios from 'axios';
 import NavBar from '../widget/navbar/NavBar.vue'
 
+// Meta
 const store = useStore()
 
-function getCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "";
-}
-
+// Data
 let stats = reactive({ guilds: 0, users: 0, commands: 0 })
 const isLoggedIn = computed(() => store.state.isLoggedIn)
 
+// onCreated
+store.dispatch("updateLoginState")
+
+// onMounted
 function getBotStats() {
     axios.get('/api/v1/botstats')
     .then((res) => {
@@ -37,7 +27,6 @@ function getBotStats() {
 
 onMounted(() => {
     getBotStats()
-    store.dispatch("updateLoginState")
 })
 </script>
 

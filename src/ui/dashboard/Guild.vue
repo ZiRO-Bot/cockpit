@@ -1,3 +1,44 @@
+<script setup>
+import { reactive, ref, computed, getCurrentInstance, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
+import { useStore } from 'vuex'
+import axios from 'axios'
+import GuildIcon from '../widget/GuildIcon.vue'
+
+// TODO: Use shimmer for loading
+
+// Meta
+const route = useRoute()
+const store = useStore()
+
+async function getGuilds({commit}) {
+    await axios.get('/api/v1/@me/guilds')
+    .then((res) => {
+        store.commit('setGuilds', res.data);
+    })
+}
+
+// Data
+const guild = ref(null)
+const isLoading = ref(true)
+const id = ref(route.params.id)
+const guilds = computed(() => store.getters.discordGuilds)
+
+// onMounted
+onMounted(() => {
+    getGuilds().then(() => {
+        const guild = this.guilds.find(x => x.id === this.id);
+
+        if (!guild) {
+            this.goTo('/dashboard')
+        } else {
+            this.guild = guild
+            this.isLoading = false
+        }
+    })
+})
+</script>
+
 <template>
     <div class="dashguild">
         <a v-if="isLoading">
@@ -65,43 +106,3 @@
     }
 }
 </style>
-
-<script>
-import { mapActions } from 'vuex';
-import GuildIcon from '@/components/GuildIcon.vue';
-
-export default {
-    name: 'DashboardGuild',
-    components: {
-        GuildIcon,
-    },
-    data(){
-        return {
-            guild: null,
-            isLoading: true,
-            id: this.$route.params.id,
-        }
-    },
-    computed: {
-        guilds: function() {
-            return this.$store.getters.discord_guilds;
-        }
-    },
-    methods: {
-        ...mapActions(['getGuilds']),
-    },
-    created() {
-        // Check if user can manage the guild
-        this.getGuilds().then(() => {
-            const guild = this.guilds.find(x => x.id === this.id);
-
-            if (!guild) {
-                this.goTo('/dashboard')
-            } else {
-                this.guild = guild
-                this.isLoading = false
-            }
-        });
-    }
-}
-</script>
