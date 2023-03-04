@@ -90,6 +90,7 @@ export default router
 */
 
 import { createRouter, createWebHistory } from "vue-router"
+import GuildList from '../ui/GuildList.vue';
 import Home from "../ui/Home.vue"
 
 const router = createRouter({
@@ -99,7 +100,16 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: Home
-    }
+    },
+    {
+        path: '/dashboard',
+        name: 'DashboardRoot',
+        component: GuildList,
+        meta: {
+            requiresAuth: true,
+            autoLogin: true
+        }
+    },
   ]
 })
 
