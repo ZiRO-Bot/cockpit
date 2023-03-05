@@ -2,6 +2,8 @@
 
 :root {
     --gray: #3E3E3E;
+    --light-gray: #8E8E8E;
+    --light-gray-hover: #6C6C6C;
     --blue: #3BA3FF;
     --blue-hover: #2488E1;
     --discord-blurple: #5865F2;
@@ -60,6 +62,20 @@ button.btn, a.btn {
     &:hover {
         cursor: pointer;
         background-color: var(--blue-hover);
+    }
+    &.primary {
+        background-color: var(--blue);
+        &:hover {
+            cursor: pointer;
+            background-color: var(--blue-hover);
+        }
+    }
+    &.info {
+        background-color: var(--light-gray);
+        &:hover {
+            cursor: pointer;
+            background-color: var(--light-gray-hover);
+        }
     }
 }
 

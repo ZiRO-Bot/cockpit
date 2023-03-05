@@ -1,27 +1,11 @@
-import axios from 'axios'
+import axios from "axios"
+import { getCookie, setCookie, deleteCookie } from "../utils/common.js"
 
 
 const state = () => ({
-    user: {},
+    user: { "username": getCookie("user") },
     isLoggedIn: false,
 });
-
-
-function getCookie(cname) {
-    const name = cname + "=";
-    const decodedCookie = decodeURIComponent(document.cookie);
-    const ca = decodedCookie.split(';');
-    for(let i = 0; i <ca.length; i++) {
-        let c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "";
-}
 
 
 const getters = {
@@ -54,6 +38,11 @@ const actions = {
 const mutations = {
     setUser(state, user) {
         state.user = user
+        const userName = user.username
+        if (userName)
+            setCookie("user", userName, 31556926)
+        else
+            deleteCookie("user")
     },
     setLoginState(state, loggedIn) {
         state.isLoggedIn = loggedIn

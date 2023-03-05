@@ -3,6 +3,7 @@ import { reactive, ref, computed, getCurrentInstance, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 import GuildIcon from '../widget/guild/GuildIcon.vue'
+import NavBar from '../widget/navbar/NavBar.vue'
 
 // Meta
 const app = getCurrentInstance()
@@ -30,6 +31,7 @@ onMounted(() => {
 </script>
 
 <template>
+    <NavBar />
     <div id="guilds">
         <section class="card" bg-variant="transparent">
             <header>
@@ -44,8 +46,8 @@ onMounted(() => {
                             <a>{{ guild.name }}</a>
                         </div>
                         <div>
-                            <a class="btn primary" v-if="guild.bot" @click="goTo(`/dashboard/${guild.id}`)">Setup</a>
-                            <a class="btn" v-else :href="guild.invite">Invite</a>
+                            <a class="btn" v-if="guild.bot" @click="goTo(`/dashboard/${guild.id}`)">Setup</a>
+                            <a class="btn info" v-else :href="guild.invite">Invite</a>
                         </div>
                     </div>
                 </div>

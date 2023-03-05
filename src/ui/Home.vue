@@ -43,8 +43,8 @@ onMounted(() => {
             </div>
 
             <div class="buttons">
-                <a class="btn info" @click="goTo('dashboard')">Add to Discord</a>
-                <a class="btn" href="#features">Features</a>
+                <a class="btn" @click="goTo('dashboard')">Add to Discord</a>
+                <a class="btn info" href="#features">Features</a>
             </div>
         </div>
         <div class="botstats bg-darker">
@@ -62,7 +62,7 @@ onMounted(() => {
                         <code>&gt;&gt;membercount</code> or
                         <code>&gt;&gt;verify</code>.</p>
                         <br/>
-                        <a class="btn info">TagScript Documentation</a>
+                        <a class="btn">TagScript Documentation</a>
                     </div>
                     <img class="zoomable" src="/static/screenshot-1.png"/>
                 </div>

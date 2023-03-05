@@ -3,7 +3,7 @@
         <img
             class="rounded-icon"
             v-if="guild.icon"
-            :src="`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png`"
+            :src="guild.icon"
         />
         <div class="rounded-icon guild-initials unselectable" v-else>
             <span>{{ guild.name.getInitials() }}</span>

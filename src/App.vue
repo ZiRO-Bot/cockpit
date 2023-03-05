@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, ref, computed, getCurrentInstance, onMounted } from 'vue'
+import { computed, onMounted, watch } from "vue"
 import { RouterLink, RouterView } from "vue-router"
 import { useStore } from "vuex"
 
@@ -24,7 +24,5 @@ onMounted(() => {
 </script>
 
 <template>
-    <div id="app">
-        <RouterView/>
-    </div>
+    <RouterView/>
 </template>

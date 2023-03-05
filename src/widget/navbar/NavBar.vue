@@ -9,17 +9,12 @@ const app = getCurrentInstance()
 const router = useRouter()
 const store = useStore()
 
-function userAvatar(user) {
-    return ""
-}
-
 async function logOut() {
     store.dispatch("logOut")
 }
 
 // Data
-const userInfo = computed(() => store.getters.user)
-console.log(userInfo)
+const user = computed(() => store.getters.user)
 const isLoggedIn = computed(() => store.getters.isLoggedIn)
 const loginUrl = ref(app.appContext.config.globalProperties.$apiURL + "/api/login")
 </script>
@@ -27,15 +22,15 @@ const loginUrl = ref(app.appContext.config.globalProperties.$apiURL + "/api/logi
 <template>
     <header class="h-navbar">
         <div class="navbar">
-            <div class="brand clickable unselectable" @click="goTo('/')">
+            <div class="brand clickable unselectable" @click="router.push('/')">
                 <img class="rounded-icon" src="/static/logo.png" width="41" height="41"/>
                 <a class="brand-name" style="font-weight: 800;">Z3R0</a>
             </div>
             <div class="nav-item" v-if="isLoggedIn" right>
-                <a disabled>Logged in as {{ userInfo.username }}</a>
+                <a disabled>Logged in as {{ user.username }}</a>
                 <hr/>
                 <img class="rounded-icon"
-                    :src="userAvatar(userInfo)"
+                    :src="user.avatar"
                     width="31"
                     height="31"
                 />
