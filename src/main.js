@@ -43,7 +43,7 @@ String.prototype.getInitials = function(glue){
         glue = true
     }
 
-    const initials = this.replace(/[^a-zA-Z- ]/g, "").match(/\b\w/g)
+    const initials = this.replace(/[^a-zA-Z- \/]/g, "").match(/(?:\b\w|\/)/g)
     
     if (glue) {
         try {
