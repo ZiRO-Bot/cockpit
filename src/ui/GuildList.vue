@@ -2,7 +2,7 @@
 import { reactive, ref, computed, getCurrentInstance, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
-import GuildIcon from './GuildIcon.vue'
+import GuildIcon from '../widget/guild/GuildIcon.vue'
 
 // Meta
 const route = useRoute()
