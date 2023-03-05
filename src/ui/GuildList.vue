@@ -5,25 +5,23 @@ import { useStore } from 'vuex'
 import GuildIcon from '../widget/guild/GuildIcon.vue'
 
 // Meta
+const app = getCurrentInstance()
 const route = useRoute()
 const store = useStore()
 
-async function getGuilds({commit}) {
-    await axios.get('/api/v1/@me/guilds')
-    .then((res) => {
-        store.commit('setGuilds', res.data);
-    })
-}
-
 // Data
-const guilds = computed(() => store.getters.discordGuilds)
+const guilds = computed(() => store.getters.guilds)
+const user = computed(() => store.getters.user)
+const loginUrl = app.appContext.config.globalProperties.$apiURL + "/api/login"
 
 // onMounted
 onMounted(() => {
-    getGuilds().catch((error) => {
+    store.dispatch("getGuilds").catch((error) => {
         if (error.response.status == 401 && location != null) {
-            this.clearUserData();
-            window.location = this.$apiURL + "/api/login";
+            store.dispatch("updateLoginState")
+            if (!store.getters.isLoggedIn) {
+                window.location = loginUrl;
+            }
         } else {
             console.error(error);
         }
@@ -33,12 +31,12 @@ onMounted(() => {
 
 <template>
     <div id="guilds">
-        <b-card bg-variant="transparent" class="guild-list-card">
-            <template #header>
+        <section class="card" bg-variant="transparent">
+            <header>
                 <h3 class="mb-0">{{ user.username }}'s Guilds</h3>
-            </template>
+            </header>
 
-            <b-card-body class="guild-list">
+            <div class="card-body guild-list">
                 <div class="guild" v-for="guild in guilds" :key="guild">
                     <GuildIcon :guild="guild"/>
                     <div class="guild-info">
@@ -46,13 +44,13 @@ onMounted(() => {
                             <a>{{ guild.name }}</a>
                         </div>
                         <div>
-                            <b-btn variant="primary" v-if="guild.bot" @click="goTo(`/dashboard/${guild.id}`)">Setup</b-btn>
-                            <b-btn v-else :href="guild.invite">Invite</b-btn>
+                            <a class="btn primary" v-if="guild.bot" @click="goTo(`/dashboard/${guild.id}`)">Setup</a>
+                            <a class="btn" v-else :href="guild.invite">Invite</a>
                         </div>
                     </div>
                 </div>
-            </b-card-body>
-        </b-card>
+            </div>
+        </section>
     </div>
 </template>
 

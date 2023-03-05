@@ -32,7 +32,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <NavBar :user="{'test': 'test'}"/>
+    <NavBar/>
     <div class="home">
         <div class="header">
             <div class="title">

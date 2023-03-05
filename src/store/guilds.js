@@ -1,16 +1,23 @@
+import axios from 'axios'
 
 
 const state = () => ({
-    discordGuilds: null,
+    guilds: {},
 })
 
 
 const getters = {
-    discordGuilds: state => state.discordGuilds
+    guilds: state => state.guilds
 };
 
 
 const actions = {
+    async getGuilds({commit}) {
+        await axios.get('/api/v1/@me/guilds')
+        .then((res) => {
+            commit('setGuilds', res.data);
+        })
+    },
     clearGuilds({commit}) {
         commit('setGuilds', null)
     }
@@ -19,7 +26,7 @@ const actions = {
 
 const mutations = {
     setGuilds(state, data) {
-        state.discordGuilds = data;
+        state.guilds = data;
     }
 };
 

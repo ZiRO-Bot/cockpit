@@ -1,31 +1,25 @@
 <script setup>
 import { reactive, toRef, ref, computed, getCurrentInstance, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import axios from 'axios'
 
 // Meta
 const app = getCurrentInstance()
+const router = useRouter()
 const store = useStore()
-const props = defineProps(["user"])
 
 function userAvatar(user) {
     return ""
 }
 
-async function logout() {
-    await axios.post("/api/logout")
-    .then((res) => {
-        if (res.data.status == 200) {
-            store.dispatch("updateLoginState")
-        }
-    }).catch((err) => {
-        if (err.response.status == 401) {
-        }
-    });
+async function logOut() {
+    store.dispatch("logOut")
 }
 
 // Data
-const userInfo = toRef(props, "user")
+const userInfo = computed(() => store.getters.user)
+console.log(userInfo)
 const isLoggedIn = computed(() => store.getters.isLoggedIn)
 const loginUrl = ref(app.appContext.config.globalProperties.$apiURL + "/api/login")
 </script>
@@ -38,15 +32,15 @@ const loginUrl = ref(app.appContext.config.globalProperties.$apiURL + "/api/logi
                 <a class="brand-name" style="font-weight: 800;">Z3R0</a>
             </div>
             <div class="nav-item" v-if="isLoggedIn" right>
-                <a disabled>Logged in as {{ userInfo }}</a>
+                <a disabled>Logged in as {{ userInfo.username }}</a>
                 <hr/>
                 <img class="rounded-icon"
                     :src="userAvatar(userInfo)"
                     width="31"
                     height="31"
                 />
-                <a class="btn" @click="goTo('/dashboard')">Guilds</a>
-                <a class="btn" @click="logout">Log Out</a>
+                <a class="btn" @click="router.push('/dashboard')">Guilds</a>
+                <a class="btn" @click="logOut">Log Out</a>
             </div>
             <a class="btn" :href="loginUrl" v-else>Login</a>
         </div>
