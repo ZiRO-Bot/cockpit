@@ -1,9 +1,10 @@
 <script setup>
-import { reactive, ref, computed, getCurrentInstance, onMounted, watch } from "vue"
+import { reactive, ref, computed, getCurrentInstance, onMounted, onUnmounted, watch } from "vue"
 import { useRoute, useRouter } from "vue-router"
 import { useStore } from "vuex"
 import axios from "axios"
-import GuildIcon from "../../widget/guild/GuildIcon.vue"
+import GuildIcon from "@/widget/guild/GuildIcon.vue"
+import NavBar from "@/widget/navbar/NavBar.vue"
 
 // TODO: Use shimmer for loading
 
@@ -12,40 +13,49 @@ const route = useRoute()
 const router = useRouter()
 const store = useStore()
 
+const ws = new WebSocket("ws://127.0.0.1/api/ws")
+ws.onmessage = (event) => {
+    const data = JSON.parse(event.data)
+    console.log(event.data)
+    if (guild.value == data.before.name)
+        guild.value = data.after.name
+}
+
 // Data
 const isLoading = ref(true)
 const id = ref(route.params.id)
 const guild = ref(null)
-const ws = new WebSocket("ws://127.0.0.1/api/ws")
-ws.onmessage = (event) => {
-    console.log(event.data)
-}
+const guildIcon = ref(null)
 
 // onMounted
 onMounted(() => {
     store.dispatch("getGuilds").then(() => {
-        const value = store.getters.guilds.find(x => x.id == id.value)
-        if (!value) {
+        const g = store.getters.guilds.find(x => x.id == id.value)
+        if (!g) {
             router.push("/dashboard")
         } else {
-            guild.value = value
+            guildIcon.value = g.icon
+            guild.value = g.name
             isLoading.value = false
         }
     })
 })
+
+onUnmounted(() => ws.close())
 </script>
 
 <template>
+    <NavBar />
     <div class="dashguild">
         <a v-if="isLoading">
             Loading...
         </a>
         <div class="dashguild-content" v-else>
             <div class="guild-detailed-info">
-                <GuildIcon :guild="guild"/>
+                <GuildIcon :icon="guildIcon"/>
                 <div class="guild-stats">
                     <h4 class="guild-name">
-                        {{ guild.name }}
+                        {{ guild }}
                     </h4>
                 </div>
             </div>

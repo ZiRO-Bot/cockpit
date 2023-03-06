@@ -2,7 +2,6 @@
 import { computed, onMounted, watch } from "vue"
 import { RouterLink, RouterView } from "vue-router"
 import { useStore } from "vuex"
-import ws from "./utils/ws.js"
 // TODO: Add loading screen
 
 // Meta

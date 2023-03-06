@@ -1,2 +1,0 @@
-const ws = new WebSocket("ws://127.0.0.1/api/ws")
-export default ws
