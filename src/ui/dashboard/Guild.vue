@@ -16,7 +16,7 @@ const store = useStore()
 const ws = new WebSocket("ws://127.0.0.1/api/ws")
 ws.onmessage = (event) => {
     const data = JSON.parse(event.data)
-    console.log(event.data)
+    console.debug(data)
     if (guild.value == data.before.name)
         guild.value = data.after.name
 }
