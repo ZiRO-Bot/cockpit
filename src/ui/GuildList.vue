@@ -1,6 +1,6 @@
 <script setup>
 import { reactive, ref, computed, getCurrentInstance, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import GuildIcon from '../widget/guild/GuildIcon.vue'
 import NavBar from '../widget/navbar/NavBar.vue'
@@ -8,6 +8,7 @@ import NavBar from '../widget/navbar/NavBar.vue'
 // Meta
 const app = getCurrentInstance()
 const route = useRoute()
+const router = useRouter()
 const store = useStore()
 
 // Data
@@ -46,7 +47,7 @@ onMounted(() => {
                             <a>{{ guild.name }}</a>
                         </div>
                         <div>
-                            <a class="btn" v-if="guild.bot" @click="goTo(`/dashboard/${guild.id}`)">Setup</a>
+                            <a class="btn" v-if="guild.bot" @click="router.push(`/dashboard/${guild.id}`)">Setup</a>
                             <a class="btn info" v-else :href="guild.invite">Invite</a>
                         </div>
                     </div>

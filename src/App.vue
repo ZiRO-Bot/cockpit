@@ -2,6 +2,8 @@
 import { computed, onMounted, watch } from "vue"
 import { RouterLink, RouterView } from "vue-router"
 import { useStore } from "vuex"
+import ws from "./utils/ws.js"
+// TODO: Add loading screen
 
 // Meta
 const store = useStore()
@@ -11,7 +13,7 @@ const loggedIn = computed(() => store.getters.isLoggedIn)
 
 // onMounted
 onMounted(() => {
-    if (loggedIn) {
+    if (loggedIn.value) {
         store.dispatch("getIdentity").catch((error) => {
             if (error.response.status == 401 && location != null) {
                 store.dispatch("updateLoginState")

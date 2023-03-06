@@ -1,13 +1,13 @@
-import axios from 'axios'
+import axios from "axios"
 
 
 const state = () => ({
-    guilds: {},
+    guilds: [],
 })
 
 
 const getters = {
-    guilds: state => state.guilds
+    guilds: state => state.guilds,
 };
 
 

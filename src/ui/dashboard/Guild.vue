@@ -1,39 +1,35 @@
 <script setup>
-import { reactive, ref, computed, getCurrentInstance, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
-import { useStore } from 'vuex'
-import axios from 'axios'
-import GuildIcon from '../widget/GuildIcon.vue'
+import { reactive, ref, computed, getCurrentInstance, onMounted, watch } from "vue"
+import { useRoute, useRouter } from "vue-router"
+import { useStore } from "vuex"
+import axios from "axios"
+import GuildIcon from "../../widget/guild/GuildIcon.vue"
 
 // TODO: Use shimmer for loading
 
 // Meta
 const route = useRoute()
+const router = useRouter()
 const store = useStore()
 
-async function getGuilds({commit}) {
-    await axios.get('/api/v1/@me/guilds')
-    .then((res) => {
-        store.commit('setGuilds', res.data);
-    })
-}
-
 // Data
-const guild = ref(null)
 const isLoading = ref(true)
 const id = ref(route.params.id)
-const guilds = computed(() => store.getters.discordGuilds)
+const guild = ref(null)
+const ws = new WebSocket("ws://127.0.0.1/api/ws")
+ws.onmessage = (event) => {
+    console.log(event.data)
+}
 
 // onMounted
 onMounted(() => {
-    getGuilds().then(() => {
-        const guild = this.guilds.find(x => x.id === this.id);
-
-        if (!guild) {
-            this.goTo('/dashboard')
+    store.dispatch("getGuilds").then(() => {
+        const value = store.getters.guilds.find(x => x.id == id.value)
+        if (!value) {
+            router.push("/dashboard")
         } else {
-            this.guild = guild
-            this.isLoading = false
+            guild.value = value
+            isLoading.value = false
         }
     })
 })
@@ -51,22 +47,7 @@ onMounted(() => {
                     <h4 class="guild-name">
                         {{ guild.name }}
                     </h4>
-                    <p><b-icon-person-fill/> <b>{{ guild.stats.members }}</b> Members</p>
                 </div>
-            </div>
-            <div class="dashboard-menus bg-darker">
-                <a class="clickable" @click="goTo(`/dashboard/${id}`)">
-                    <b-icon-house-fill/> Dashboard
-                </a>
-                <a class="clickable" @click="goTo(`/dashboard/${id}/settings`)">
-                    <b-icon-gear-fill/> Settings
-                </a>
-                <a class="clickable" @click="goTo(`/dashboard/${id}/utility`)">
-                    <b-icon-wrench/> Utility
-                </a>
-            </div>
-            <div class="bg-dark">
-                <router-view :guild="guild"></router-view>
             </div>
         </div>
     </div>
