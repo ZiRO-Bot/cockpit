@@ -7,6 +7,8 @@ import { useStore } from "vuex"
 // Meta
 const store = useStore()
 
+store.dispatch("updateLoginState")  // Making sure login state is up to date
+
 // Data
 const loggedIn = computed(() => store.getters.isLoggedIn)
 
