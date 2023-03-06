@@ -13,7 +13,6 @@ const store = useStore()
 
 // Data
 const guilds = computed(() => store.getters.guilds)
-const user = computed(() => store.getters.user)
 const loginUrl = app.appContext.config.globalProperties.$apiURL + "/api/login"
 
 // onMounted
@@ -36,7 +35,7 @@ onMounted(() => {
     <div id="guilds">
         <section class="card" bg-variant="transparent">
             <header>
-                <h3 class="mb-0">{{ user.username }}'s Guilds</h3>
+                <h3 class="mb-0">Select a Server</h3>
             </header>
 
             <div class="card-body guild-list">
