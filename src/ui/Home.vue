@@ -86,7 +86,7 @@ onMounted(() => {
 .subtitle {
     font-size: 1em;
     margin: 1rem;
-    color: var(--gray);
+    color: var(--light-gray);
 }
 
 img.zoomable {

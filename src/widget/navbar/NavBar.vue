@@ -26,23 +26,82 @@ const loginUrl = ref(app.appContext.config.globalProperties.$apiURL + "/api/logi
                 <img class="rounded-icon" src="/static/logo.png" width="41" height="41"/>
                 <a class="brand-name" style="font-weight: 800;">Z3R0</a>
             </div>
-            <div class="nav-item" v-if="isLoggedIn" right>
-                <a disabled>Logged in as {{ user.username }}</a>
-                <hr/>
-                <img class="rounded-icon"
-                    :src="user.avatar"
-                    width="31"
-                    height="31"
-                />
-                <a class="btn" @click="router.push('/dashboard')">Guilds</a>
-                <a class="btn" @click="logOut">Log Out</a>
+            <div class="nav-item flex-grow">
             </div>
-            <a class="btn" :href="loginUrl" v-else>Login</a>
+            <div class="nav-item position-relative" v-if="isLoggedIn" right>
+                <details class="dropdown">
+                    <summary>
+                        <img class="rounded-icon"
+                            :src="user.avatar"
+                            width="31"
+                            height="31"
+                        />
+                    </summary>
+                    <details-menu class="dropdown-menu" style="width: 180px;">
+                        <a disabled>Logged in as {{ user.username }}</a>
+                        <hr/>
+                        <div class="flex-col dropdown-item group">
+                            <a class="btn small" @click="router.push('/dashboard')">Guilds</a>
+                            <a class="btn small" @click="logOut">Log Out</a>
+                        </div>
+                    </details-menu>
+                </details>
+            </div>
+            <a class="btn small" :href="loginUrl" v-else>Login</a>
         </div>
     </header>
 </template>
 
 <style lang="scss" scoped>
+header.h-navbar {
+    top: 0;
+    position: sticky;
+    overflow: visible;
+    background-color: var(--bg-dark);
+}
+
+.dropdown[open] > summary::before {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 80;
+    display: block;
+    cursor: default;
+    content: " ";
+    background: transparent;
+}
+
+.dropdown-menu {
+    border-radius: 1.5rem;
+    padding: 0.5rem;
+    left: auto;
+    right: 0;
+    position: absolute;
+    z-index: 1000;
+    background-color: var(--bg-dark)!important;
+    .disabled {
+        background-color: var(--bg-dark)!important;
+    }
+    .dropdown-divider {
+        border-top: 1px solid var(--gray);
+    }
+    .dropdown-item {
+        &.group > *:not(:last-child) {
+            margin-bottom: 0.5rem;
+        }
+        color: white!important;
+    }
+}
+
+.navbar {
+    display: flex;
+    padding: 1rem;
+    padding-inline: 2rem;
+    border-radius: 14px;
+}
+
 .navbar-nav .nav-item {
     padding-inline: 5px;
 }
@@ -60,27 +119,8 @@ const loginUrl = ref(app.appContext.config.globalProperties.$apiURL + "/api/logi
     text-decoration: none!important;
     color: var(--light)!important;
 }
-header.h-navbar {
-    padding-bottom: 92px;
-}
 .clickable {
     cursor: pointer;
-}
-.dropdown-menu {
-    position: absolute;
-    background-color: var(--dark)!important;
-    .disabled {
-        background-color: var(--dark)!important;
-    }
-    .dropdown-divider {
-        border-top: 1px solid var(--gray-dark);
-    }
-    .dropdown-item {
-        color: var(--light)!important;
-        &:hover, &:focus {
-            background-color: var(--primary)!important;
-        }
-    }
 }
 @media (min-width: 576px) {
     .ml-login {

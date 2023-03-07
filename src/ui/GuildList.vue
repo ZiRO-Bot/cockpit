@@ -64,13 +64,17 @@ onMounted(() => {
     padding-top: 5px;
 }
 .guild-list {
+    margin: 2rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 1rem;
     /* grid-template-columns: 1fr 1fr 1fr; */
 }
 .guild {
+    background-color: var(--bg-dark);
+    border-radius: 1.5rem;
     width: 100%;
-    padding: 24px;
+    padding: 1.5rem;
     .guild-icon {
         padding-bottom: 20px;
     }
@@ -80,11 +84,13 @@ onMounted(() => {
         .guild-info-name {
             display: flex;
             align-items: center;
+            margin-right: 1rem;
             a {
+                text-align: start;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 display: -webkit-box;
-                -webkit-line-clamp: 2;
+                -webkit-line-clamp: 1;
                 -moz-box-orient: vertical;
                 -webkit-box-orient: vertical;
             }
