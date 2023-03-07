@@ -105,12 +105,12 @@ img.zoomable {
 .home-content {
     padding: 15px;
     .features {
-        padding: 20px 100px;
+        padding: 0px 100px 20px 100px;
         .feature {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 30px 0px;
+            padding: 4.5rem 0px;
             .feature-detail {
                 h1 {
                     font-weight: bold;
@@ -133,7 +133,8 @@ img.zoomable {
     }
 }
 .botstats {
-    padding: 15px;
+    padding: 1.5rem;
+    padding-top: 2rem;
     display: flex;
     flex-wrap: wrap;
     align-content: center;

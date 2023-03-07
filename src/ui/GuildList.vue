@@ -35,7 +35,7 @@ onMounted(() => {
     <div id="guilds">
         <section class="card" bg-variant="transparent">
             <header>
-                <h3 class="mb-0">Select a Server</h3>
+                <h2 class="mb-0">Select a Server</h2>
             </header>
 
             <div class="card-body guild-list">

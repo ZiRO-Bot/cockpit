@@ -60,38 +60,12 @@ header.h-navbar {
     background-color: var(--bg-dark);
 }
 
-.dropdown[open] > summary::before {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 80;
-    display: block;
-    cursor: default;
-    content: " ";
-    background: transparent;
-}
-
 .dropdown-menu {
-    border-radius: 1.5rem;
-    padding: 0.5rem;
-    left: auto;
-    right: 0;
-    position: absolute;
-    z-index: 1000;
-    background-color: var(--bg-dark)!important;
-    .disabled {
-        background-color: var(--bg-dark)!important;
+    > a {
+        padding-inline: 0.5rem;
     }
-    .dropdown-divider {
-        border-top: 1px solid var(--gray);
-    }
-    .dropdown-item {
-        &.group > *:not(:last-child) {
-            margin-bottom: 0.5rem;
-        }
-        color: white!important;
+    > hr {
+        color: #212E37;
     }
 }
 
