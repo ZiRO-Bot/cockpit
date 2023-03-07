@@ -2,6 +2,7 @@
 import { computed, onMounted, watch } from "vue"
 import { RouterLink, RouterView } from "vue-router"
 import { useStore } from "vuex"
+import { deleteCookie } from "@/utils/common.js"
 // TODO: Add loading screen
 
 // Meta
@@ -16,11 +17,19 @@ const loggedIn = computed(() => store.getters.isLoggedIn)
 onMounted(() => {
     if (loggedIn.value) {
         store.dispatch("getIdentity").catch((error) => {
-            if (error.response.status == 401 && location != null) {
-                store.dispatch("updateLoginState")
-            } else {
-                console.error(error);
-            }
+            if (location != null)
+                switch (error.response.status) {
+                    case 401:
+                    case 502:
+                        deleteCookie("loggedIn")
+                        store.dispatch("updateLoginState")
+                        break
+                    default:
+                        console.error(error)
+                        break
+                }
+            else
+                console.error(error)
         })
     }
 })
