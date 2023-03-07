@@ -134,7 +134,7 @@ img.zoomable {
 }
 .botstats {
     padding: 1.5rem;
-    padding-top: 2rem;
+    padding-top: 1.2rem;
     display: flex;
     flex-wrap: wrap;
     align-content: center;
