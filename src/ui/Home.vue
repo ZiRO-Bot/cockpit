@@ -48,7 +48,7 @@ onMounted(() => {
             </div>
         </div>
         <div class="botstats bg-darker">
-            <a><b>{{ stats.guilds }}</b> Guilds</a>
+            <a><b>{{ stats.guilds }}</b> Servers</a>
             <a><b>{{ stats.users }}</b> Users</a>
             <a><b>{{ stats.commands }}</b> Commands Ran</a>
         </div>
@@ -98,7 +98,7 @@ img.zoomable {
 
 .buttons {
     display: flex;
-    gap: 1rem;
+    gap: 0.6rem;
     justify-content: center;
 }
 
