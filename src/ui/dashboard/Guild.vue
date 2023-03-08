@@ -3,8 +3,8 @@ import { reactive, ref, computed, getCurrentInstance, onMounted, onUnmounted, wa
 import { useRoute, useRouter } from "vue-router"
 import { useStore } from "vuex"
 import axios from "axios"
-import GuildIcon from "@/widget/guild/GuildIcon.vue"
-import NavBar from "@/widget/navbar/NavBar.vue"
+import DashboardNavBar from "@/widget/navbar/DashboardNavBar.vue"
+import Brand from "@/widget/Brand.vue"
 import Spinner from "@/widget/Spinner.vue"
 
 // Meta
@@ -37,73 +37,53 @@ onMounted(() => {
         }
     })
 })
-
 onUnmounted(() => ws.close())
 </script>
 
 <template>
     <div class="dashboard">
         <div class="side">
-            <ul>
-                <li>Home</li>
-                <li>Core</li>
-                <li>Commands</li>
-            </ul>
+            <p class="sidebar flex-col">
+                <Brand class="flex-grow flex-h-center" />
+                <router-link class="sidebar-item" to="/">Home</router-link>
+                <router-link class="sidebar-item" to="/">Core</router-link>
+                <router-link class="sidebar-item" to="/">Commands</router-link>
+            </p>
         </div>
         <div class="main">
-            <NavBar />
-            <Spinner v-if="isLoading" />
-            <div class="content" v-else>
-                <div class="guild-detailed-info">
-                    <GuildIcon :guild="guild"/>
-                    <div class="guild-stats">
-                        <h4 class="guild-name">
-                            {{ guild.name }}
-                        </h4>
-                    </div>
+            <DashboardNavBar />
+            <div class="container">
+                <div class="loading flex-v-center flex-h-center" v-if="isLoading">
+                    <Spinner />
                 </div>
+                <router-view :guild="guild" v-else/>
             </div>
         </div>
     </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .dashboard {
     display: flex;
 }
-.main {
-    width: 100%;
-}
-.main .content {
-    .guild-detailed-info {
-        padding-inline: 50px;
-        display: flex;
-        justify-content: start;
-        align-items: center;
-        margin-top: 20px;
-        & > .guild-stats {
-            margin-left: 20px;
-            & > p {
-                text-align: start;
-                margin-bottom: 0px;
-            }
-            & > .guild-name {
-                font-weight: bold;
-                color: var(--light) !important;
-                text-decoration: none !important;
-            }
-        }
+
+.sidebar {
+    margin-top: 0;
+    .brand {
+        height: var(--navbar-height);
     }
-    .dashboard-menus {
-        margin-top: 25px;
-        padding-block: 12px;
-        a {
-            color: var(--light) !important;
-            text-decoration: none !important;
-        }
-        a:not(:last-child) {
-            margin-right: 45px;
-        }
+}
+
+.side {
+    width: 20%;
+    background-color: var(--bg-dark);
+    min-height: 100vh;
+}
+
+.main {
+    width: 80%;
+    .container .loading {
+        height: var(--full-height-with-navbar);
     }
 }
 </style>

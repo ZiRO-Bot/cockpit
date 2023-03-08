@@ -24,7 +24,6 @@ const loginUrl = ref(app.appContext.config.globalProperties.$apiURL + "/api/logi
 
 <template>
     <div class="navbar">
-        <Brand class="clickable" @click="router.push('/')" />
         <div class="nav-item flex-grow">
         </div>
         <div class="nav-item position-relative" v-if="isLoggedIn" right>
@@ -33,6 +32,3 @@ const loginUrl = ref(app.appContext.config.globalProperties.$apiURL + "/api/logi
         <a class="btn small" :href="loginUrl" v-else>Login</a>
     </div>
 </template>
-
-<style lang="scss" scoped>
-</style>

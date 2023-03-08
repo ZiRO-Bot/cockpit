@@ -9,15 +9,19 @@
     --bg-dark-secondary: #212E37;
     --bg-dark: #0E1418;
     --bg-darker: #06090B;
+    --navbar-height: 80px;
+    --full-height-with-navbar: calc(100vh - var(--navbar-height));
 }
 
 body {
     margin: 0px;
+    min-height: 100%;
 }
 
 html {
     scroll-behavior: smooth;
     background-color: var(--bg-darker);
+    height: 100%;
 }
 
 @mixin clickable {
@@ -47,6 +51,7 @@ a {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
+    min-height: 100%;
     /* color: #2c3e50; */
 }
 
@@ -63,7 +68,7 @@ button.btn, a.btn {
     @extend .unselectable;
 
     font-size: 1em;
-    line-height: 1;
+    line-height: 1.5;
     padding: 1.2rem 1.6rem;
     border: 0;
     border-radius: 100rem;
@@ -126,6 +131,12 @@ code {
     align-items: center;
 }
 
+.flex-h-center {
+    @include flex;
+
+    justify-content: center;
+}
+
 .flex-grow {
     flex-grow: 1;
 }
@@ -152,9 +163,16 @@ code {
     &:hover {
         @include clickable;
     }
+    .ic {
+        margin-left: 0.2rem;
+    }
     &:hover > .ic {
         filter: brightness(0.9);
     }
+}
+
+.dropdown[open] > summary > .ic {
+    rotate: 180deg;
 }
 
 .dropdown-menu {
@@ -189,4 +207,22 @@ code {
         }
         color: white!important;
     }
+}
+
+.navbar {
+    height: var(--navbar-height) !important;
+    top: 0;
+    position: sticky;
+    overflow: visible;
+    background-color: var(--bg-dark);
+    display: flex;
+    padding: 1rem;
+    padding-inline: 2rem;
+    z-index: 2;
+}
+
+.navbar .nav-item {
+    padding-inline: 5px;
+    display: flex;
+    align-items: center;
 }

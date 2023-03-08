@@ -1,6 +1,3 @@
-<script setup>
-</script>
-
 <template>
     <div class="brand unselectable">
         <img class="rounded-icon" src="/static/logo.png" width="41" height="41"/>

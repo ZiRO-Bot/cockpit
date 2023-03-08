@@ -30,6 +30,8 @@ const actions = {
         await axios.post('/api/logout').then((res) => {
             if (res.data.status == 200)
                 dispatch('updateLoginState')
+        }).catch(() => {
+            dispatch('updateLoginState')
         })
     }
 };
