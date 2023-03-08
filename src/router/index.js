@@ -92,42 +92,47 @@ export default router
 import { createRouter, createWebHistory } from "vue-router"
 import GuildList from "@/ui/GuildList.vue"
 import GuildHome from "@/ui/dashboard/GuildHome.vue"
+import GuildMeta from "@/ui/dashboard/GuildMeta.vue"
 import Guild from "@/ui/dashboard/Guild.vue"
 import Home from "@/ui/Home.vue"
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: "/",
-      name: "Home",
-      component: Home
-    },
-    {
-        path: "/dashboard",
-        name: "GuildList",
-        component: GuildList,
-        meta: {
-            requiresAuth: true,
-            autoLogin: true
-        }
-    },
-    {
-        path: "/dashboard/:id",
-        name: "Dashboard",
-        component: Guild,
-        meta: {
-            requiresAuth: true,
-            autoLogin: true
+    history: createWebHistory(import.meta.env.BASE_URL),
+    routes: [
+        {
+          path: "/",
+          name: "Home",
+          component: Home
         },
-        children: [
-            {
-                path: '',
-                component: GuildHome,
+        {
+            path: "/dashboard",
+            name: "GuildList",
+            component: GuildList,
+            meta: {
+                requiresAuth: true,
+                autoLogin: true
+            }
+        },
+        {
+            path: "/dashboard/:id",
+            name: "Dashboard",
+            component: Guild,
+            meta: {
+                requiresAuth: true,
+                autoLogin: true
             },
-        ],
-    },
-  ]
+            children: [
+                {
+                    path: "",
+                    component: GuildHome,
+                },
+                {
+                    path: "meta",
+                    component: GuildMeta,
+                },
+            ],
+        },
+    ],
 })
 
 export default router

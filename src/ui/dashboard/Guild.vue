@@ -97,9 +97,10 @@ onUnmounted(() => ws.close())
         height: var(--navbar-height);
     }
     .btn {
+        padding-block: 0.8rem !important;
         border-radius: 1rem;
         background-color: var(--bg-dark) !important;
-        &.router-link-active {
+        &.router-link-exact-active {
             background-color: var(--bg-dark-btn) !important;
         }
         &:hover {
