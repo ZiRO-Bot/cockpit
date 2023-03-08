@@ -59,14 +59,14 @@ onUnmounted(() => ws.close())
 <template>
     <div class="dashboard">
         <div class="side">
-            <p class="sidebar flex-col">
+            <aside class="sidebar flex-col">
                 <div class="flex-grow flex-h-center flex-v-center navbar-height">
                     <Brand class="clickable" @click='router.push("/dashboard/" + id)' />
                 </div>
-                <router-link class="sidebar-item" :to='"/dashboard/" + id'>Home</router-link>
-                <router-link class="sidebar-item" to="/">Core</router-link>
-                <router-link class="sidebar-item" to="/">Commands</router-link>
-            </p>
+                <router-link class="sidebar-item btn" :to='"/dashboard/" + id'>Home</router-link>
+                <router-link class="sidebar-item btn" :to='"/dashboard/" + id + "/meta"'>Meta</router-link>
+                <router-link class="sidebar-item btn" to="/">Commands</router-link>
+            </aside>
         </div>
         <div class="main">
             <DashboardNavBar />
@@ -90,14 +90,27 @@ onUnmounted(() => ws.close())
 }
 
 .sidebar {
+    top: 0;
+    position: sticky;
     margin-top: 0;
     .navbar-height {
         height: var(--navbar-height);
+    }
+    .btn {
+        border-radius: 1rem;
+        background-color: var(--bg-dark) !important;
+        &.router-link-active {
+            background-color: var(--bg-dark-btn) !important;
+        }
+        &:hover {
+            color: var(--light-gray);
+        }
     }
 }
 
 .side {
     width: 20%;
+    max-width: 20%;
     background-color: var(--bg-dark);
     min-height: 100vh;
 }
