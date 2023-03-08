@@ -1,8 +1,9 @@
 <script setup>
-import { reactive, ref, computed, onMounted } from 'vue'
-import { useStore } from 'vuex'
-import axios from 'axios';
-import NavBar from '../widget/navbar/NavBar.vue'
+import { inviteUrl as inviteLink } from "../utils/constant.js"
+import { reactive, ref, computed, onMounted } from "vue"
+import { useStore } from "vuex"
+import axios from "axios"
+import NavBar from "@/widget/navbar/NavBar.vue"
 
 // Meta
 const store = useStore()
@@ -10,14 +11,13 @@ const store = useStore()
 // Data
 let stats = reactive({ guilds: 0, users: 0, commands: 0 })
 const isLoggedIn = computed(() => store.state.isLoggedIn)
-const inviteLink = "https://discord.com/oauth2/authorize?client_id=740122842988937286&scope=bot&permissions=2080898294"
 
 // onCreated
 store.dispatch("updateLoginState")
 
 // onMounted
 function getBotStats() {
-    axios.get('/api/v1/botstats')
+    axios.get("/api/v1/botstats")
     .then((res) => {
         const data = res.data
         stats.guilds = data.guilds
