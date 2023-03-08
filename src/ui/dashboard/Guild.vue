@@ -20,8 +20,16 @@ ws.onmessage = (event) => {
     if (data.i)
         return
 
-    if ((data.before && data.after) && guild.value.name == data.before.name)
-        guild.value.name = data.after.name
+    if (data.before && data.after) {
+        if (guild.value.id != data.before.id)
+            return
+
+        if (guild.value.name != data.after.name)
+            guild.value.name = data.after.name
+
+        if (guild.value.icon != data.after.icon)
+            guild.value.icon = data.after.icon
+    }
     console.log(guild.value)
 }
 ws.onopen = (event) => {
