@@ -3,7 +3,6 @@ import { reactive, ref, computed, onMounted } from 'vue'
 import { useStore } from 'vuex'
 import axios from 'axios';
 import NavBar from '../widget/navbar/NavBar.vue'
-import Spinner from '../widget/spinner/Spinner.vue'
 
 // Meta
 const store = useStore()

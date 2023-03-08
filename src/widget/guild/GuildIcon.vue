@@ -1,16 +1,16 @@
 <script setup>
 import { reactive, ref, computed, getCurrentInstance, onMounted, watch } from "vue"
-const props = defineProps(["guild", "icon"])
+const props = defineProps(["guild"])
 
-const guildIcon = ref(!!props.guild ? props.guild.icon : props.icon)
+const guild = computed(() => props.guild || {})
 </script>
 
 <template>
     <div class="guild-icon">
         <img
             class="rounded-icon"
-            v-if="guildIcon"
-            :src="guildIcon"
+            v-if="guild.icon"
+            :src="guild.icon"
         />
         <div class="rounded-icon guild-initials unselectable" v-else>
             <span>{{ guild.name.getInitials() }}</span>

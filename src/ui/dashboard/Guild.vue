@@ -5,8 +5,7 @@ import { useStore } from "vuex"
 import axios from "axios"
 import GuildIcon from "@/widget/guild/GuildIcon.vue"
 import NavBar from "@/widget/navbar/NavBar.vue"
-
-// TODO: Use shimmer for loading
+import Spinner from "@/widget/Spinner.vue"
 
 // Meta
 const route = useRoute()
@@ -25,7 +24,6 @@ ws.onmessage = (event) => {
 const isLoading = ref(true)
 const id = ref(route.params.id)
 const guild = ref(null)
-const guildIcon = ref(null)
 
 // onMounted
 onMounted(() => {
@@ -34,8 +32,7 @@ onMounted(() => {
         if (!g) {
             router.push("/dashboard")
         } else {
-            guildIcon.value = g.icon
-            guild.value = g.name
+            guild.value = g
             isLoading.value = false
         }
     })
@@ -45,18 +42,25 @@ onUnmounted(() => ws.close())
 </script>
 
 <template>
-    <NavBar />
-    <div class="dashguild">
-        <a v-if="isLoading">
-            Loading...
-        </a>
-        <div class="dashguild-content" v-else>
-            <div class="guild-detailed-info">
-                <GuildIcon :icon="guildIcon"/>
-                <div class="guild-stats">
-                    <h4 class="guild-name">
-                        {{ guild }}
-                    </h4>
+    <div class="dashboard">
+        <div class="side">
+            <ul>
+                <li>Home</li>
+                <li>Core</li>
+                <li>Commands</li>
+            </ul>
+        </div>
+        <div class="main">
+            <NavBar />
+            <Spinner v-if="isLoading" />
+            <div class="content" v-else>
+                <div class="guild-detailed-info">
+                    <GuildIcon :guild="guild"/>
+                    <div class="guild-stats">
+                        <h4 class="guild-name">
+                            {{ guild.name }}
+                        </h4>
+                    </div>
                 </div>
             </div>
         </div>
@@ -64,7 +68,13 @@ onUnmounted(() => ws.close())
 </template>
 
 <style lang="scss">
-.dashguild-content {
+.dashboard {
+    display: flex;
+}
+.main {
+    width: 100%;
+}
+.main .content {
     .guild-detailed-info {
         padding-inline: 50px;
         display: flex;

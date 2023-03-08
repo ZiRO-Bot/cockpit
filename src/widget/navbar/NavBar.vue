@@ -4,11 +4,14 @@ import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import axios from 'axios'
 import { ChevronDown } from "lucide-vue-next"
+import Brand from "@/widget/Brand.vue"
 
 // Meta
 const app = getCurrentInstance()
 const router = useRouter()
 const store = useStore()
+const props = defineProps(["dashboard"])
+const inDashboard = computed(() => !!props.dashboard)
 
 async function logOut() {
     store.dispatch("logOut")
@@ -23,10 +26,7 @@ const loginUrl = ref(app.appContext.config.globalProperties.$apiURL + "/api/logi
 <template>
     <header class="h-navbar">
         <div class="navbar">
-            <div class="brand clickable unselectable" @click="router.push('/')">
-                <img class="rounded-icon" src="/static/logo.png" width="41" height="41"/>
-                <a class="brand-name" style="font-weight: 800;">Z3R0</a>
-            </div>
+            <Brand class="clickable" @click="router.push('/')" />
             <div class="nav-item flex-grow">
             </div>
             <div class="nav-item position-relative" v-if="isLoggedIn" right>
@@ -87,25 +87,16 @@ header.h-navbar {
 .navbar-shadow {
     box-shadow: 0px 0px 30px black;
 }
-
-.brand {
-    display: flex;
-    align-items: center;
-}
-
-.brand-name {
-    padding: 5px;
-    text-decoration: none!important;
-    color: var(--light)!important;
-}
 .clickable {
     cursor: pointer;
 }
+
 @media (min-width: 576px) {
     .ml-login {
         padding-left: 2.5%!important;
     }
 }
+
 /*
 .dropdown-menu {
     transition: all 0.5s ease;

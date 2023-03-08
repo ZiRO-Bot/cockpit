@@ -3,7 +3,7 @@
 import { reactive, toRef, ref, computed, getCurrentInstance, onMounted } from 'vue'
 const props = defineProps(["color"])
 
-const color = ref(props.color || "#000")
+const color = ref(props.color || "#fff")
 </script>
 
 <template>
