@@ -17,7 +17,7 @@ const guild = computed(() => props.guild || {})
         <div
             class="rounded-icon guild-initials unselectable"
             v-else
-            :style="{'--g-ic-size': size + 'rem'}"
+            :style="{'--g-ic-size': size + 'rem', '--g-ic-font-size': (size/4) + 'em'}"
         >
             <span>{{ guild.name.getInitials() }}</span>
         </div>
@@ -35,7 +35,7 @@ const guild = computed(() => props.guild || {})
     .guild-initials {
         background: var(--discord-blurple);
         display: flex;
-        font-size: xx-large;
+        font-size: var(--g-ic-font-size);
         font-weight: bold;
         width: var(--g-ic-size);
         height: var(--g-ic-size);
