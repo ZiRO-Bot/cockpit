@@ -28,6 +28,10 @@ html {
     cursor: pointer;
 }
 
+.clickable {
+    @include clickable;
+}
+
 .unselectable {
    -moz-user-select: -moz-none;
    -khtml-user-select: none;
