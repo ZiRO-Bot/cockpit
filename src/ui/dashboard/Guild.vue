@@ -63,9 +63,11 @@ onUnmounted(() => ws.close())
                 <div class="flex-grow flex-h-center flex-v-center navbar-height">
                     <Brand class="clickable" @click='router.push("/dashboard/" + id)' />
                 </div>
-                <router-link class="sidebar-item btn" :to='"/dashboard/" + id'>Home</router-link>
-                <router-link class="sidebar-item btn" :to='"/dashboard/" + id + "/meta"'>Meta</router-link>
-                <router-link class="sidebar-item btn" to="/">Commands</router-link>
+                <div class="pages flex-col flex-grow" v-bind:class="{ disabled: isLoading }">
+                    <router-link class="sidebar-item btn" :to='"/dashboard/" + id'>Home</router-link>
+                    <router-link class="sidebar-item btn" :to='"/dashboard/" + id + "/meta"'>Meta</router-link>
+                    <router-link class="sidebar-item btn" to="/">Commands</router-link>
+                </div>
             </aside>
         </div>
         <div class="main">
@@ -99,13 +101,17 @@ onUnmounted(() => ws.close())
     .btn {
         padding-block: 0.8rem !important;
         border-radius: 1rem;
-        background-color: var(--bg-dark) !important;
+        background-color: transparent !important;
         &.router-link-exact-active {
             background-color: var(--bg-dark-btn) !important;
         }
         &:hover {
             color: var(--light-gray);
         }
+    }
+    .pages.disabled {
+        filter: brightness(0.6);
+        pointer-events: none;
     }
 }
 
