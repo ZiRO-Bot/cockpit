@@ -36,14 +36,14 @@ onMounted(() => {
     <div class="home">
         <div class="header">
             <div class="title">
-                <b>Z3R0</b>
+                Z3R0
             </div>
             <div class="subtitle">
                 A libre multi-purpose customizable discord bot
             </div>
 
             <div class="buttons">
-                <a class="btn" @click="goTo('dashboard')">Add to Discord</a>
+                <button class="btn" @click="goTo('dashboard')">Add to Discord</button>
                 <a class="btn info" href="#features">Features</a>
             </div>
         </div>
@@ -80,12 +80,15 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .title {
-    font-size: 2.5em;
+    font-weight: 800;
+    font-size: 3em;
+    margin-bottom: 0.5rem;
 }
 
 .subtitle {
-    font-size: 1em;
-    margin: 1rem;
+    font-weight: 400;
+    font-size: 1.5em;
+    margin-bottom: 2rem;
     color: var(--light-gray);
 }
 

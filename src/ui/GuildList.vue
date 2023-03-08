@@ -45,7 +45,7 @@ onMounted(() => {
                         <div class="guild-info-name">
                             <a>{{ guild.name }}</a>
                         </div>
-                        <div>
+                        <div class="guild-action">
                             <a class="btn" v-if="guild.bot" @click="router.push(`/dashboard/${guild.id}`)">Setup</a>
                             <a class="btn info" v-else :href="guild.invite">Invite</a>
                         </div>
@@ -58,18 +58,18 @@ onMounted(() => {
 
 <style lang="scss">
 #guilds {
-    padding-top: 10px;
+    padding-top: 1rem;
 }
-.guild-list-card {
-    padding-top: 5px;
-}
+
 .guild-list {
-    margin: 2rem;
+    margin-inline: 10rem;
+    margin-bottom: 1rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-gap: 1rem;
+    grid-gap: 4rem 2rem;
     /* grid-template-columns: 1fr 1fr 1fr; */
 }
+
 .guild {
     background-color: var(--bg-dark);
     border-radius: 1.5rem;

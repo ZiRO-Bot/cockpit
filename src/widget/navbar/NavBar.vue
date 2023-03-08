@@ -3,6 +3,7 @@ import { reactive, toRef, ref, computed, getCurrentInstance, onMounted } from 'v
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import axios from 'axios'
+import { ChevronDown } from "lucide-vue-next"
 
 // Meta
 const app = getCurrentInstance()
@@ -30,21 +31,22 @@ const loginUrl = ref(app.appContext.config.globalProperties.$apiURL + "/api/logi
             </div>
             <div class="nav-item position-relative" v-if="isLoggedIn" right>
                 <details class="dropdown">
-                    <summary>
+                    <summary class="flex-v-center">
                         <img class="rounded-icon"
                             :src="user.avatar"
                             width="31"
                             height="31"
                         />
+                        <ChevronDown class="ic" size="20"/>
                     </summary>
-                    <details-menu class="dropdown-menu" style="width: 180px;">
+                    <div class="dropdown-menu" style="width: 180px;">
                         <a disabled>Logged in as {{ user.username }}</a>
-                        <hr/>
+                        <hr class="dropdown-divider"/>
                         <div class="flex-col dropdown-item group">
                             <a class="btn small" @click="router.push('/dashboard')">Guilds</a>
                             <a class="btn small" @click="logOut">Log Out</a>
                         </div>
-                    </details-menu>
+                    </div>
                 </details>
             </div>
             <a class="btn small" :href="loginUrl" v-else>Login</a>
@@ -64,8 +66,11 @@ header.h-navbar {
     > a {
         padding-inline: 0.5rem;
     }
-    > hr {
-        color: #212E37;
+}
+
+.dropdown {
+    > summary > .ic {
+        margin-left: 0.2rem;
     }
 }
 

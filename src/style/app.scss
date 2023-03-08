@@ -6,6 +6,7 @@
     --blue: #3BA3FF;
     --blue-hover: #207CD0;
     --discord-blurple: #5865F2;
+    --bg-dark-secondary: #212E37;
     --bg-dark: #0E1418;
     --bg-darker: #06090B;
 }
@@ -17,6 +18,10 @@ body {
 html {
     scroll-behavior: smooth;
     background-color: var(--bg-darker);
+}
+
+@mixin clickable {
+    cursor: pointer;
 }
 
 .unselectable {
@@ -57,15 +62,17 @@ a {
 button.btn, a.btn {
     @extend .unselectable;
 
+    font-size: 1em;
     line-height: 1;
-    padding: 1.2rem 1.4rem;
+    padding: 1.2rem 1.6rem;
+    border: 0;
     border-radius: 100rem;
     background-color: var(--blue);
     color: white;
     text-decoration: none;
     font-weight: 600;
     transition: opacity .5s ease-in-out,background-color .2s ease-in-out,transform .05s ease-in-out,outline .2s ease-in-out;
-    &:hover {
+    .guild:hover > .guild-info > .guild-action > .btn, &:hover {
         cursor: pointer;
         background-color: var(--blue-hover);
     }
@@ -84,6 +91,7 @@ button.btn, a.btn {
         }
     }
     &.small {
+        font-size: 0.9em;
         padding: 0.8rem 1rem;
     }
 }
@@ -96,20 +104,26 @@ code {
     border-radius: 6px;
 }
 
-.flex {
+@mixin flex {
     display: flex;
 }
 
 .flex-row {
-    @extend .flex;
+    @include flex;
 
     flex-direction: row;
 }
 
 .flex-col {
-    @extend .flex;
+    @include flex;
 
     flex-direction: column;
+}
+
+.flex-v-center {
+    @include flex;
+
+    align-items: center;
 }
 
 .flex-grow {
@@ -133,11 +147,19 @@ code {
     background: transparent;
 }
 
-.dropdown summary {
+.dropdown > summary {
     list-style: none;
+    &:hover {
+        @include clickable;
+    }
+    &:hover > .ic {
+        filter: brightness(0.9);
+    }
 }
 
 .dropdown-menu {
+    margin-top: 0.8rem;
+    border: 1px solid var(--bg-dark-secondary);
     border-radius: 0.5rem;
     padding-block: 0.5rem;
     left: auto;
@@ -145,11 +167,15 @@ code {
     position: absolute;
     z-index: 1000;
     background-color: var(--bg-dark)!important;
-    .disabled {
+    [disabled] {
+        @extend .unselectable;
+        color: var(--light-gray);
         background-color: var(--bg-dark)!important;
     }
     .dropdown-divider {
-        border-top: 1px solid var(--gray);
+        color: var(--bg-dark-secondary);
+        border-top: 1px solid var(--bg-dark-secondary);
+        border-bottom: 0px;
     }
     .dropdown-item {
         * {
