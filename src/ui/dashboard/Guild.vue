@@ -60,8 +60,10 @@ onUnmounted(() => ws.close())
     <div class="dashboard">
         <div class="side">
             <p class="sidebar flex-col">
-                <Brand class="flex-grow flex-h-center" />
-                <router-link class="sidebar-item" to="/">Home</router-link>
+                <div class="flex-grow flex-h-center flex-v-center navbar-height">
+                    <Brand class="clickable" @click='router.push("/dashboard/" + id)' />
+                </div>
+                <router-link class="sidebar-item" :to='"/dashboard/" + id'>Home</router-link>
                 <router-link class="sidebar-item" to="/">Core</router-link>
                 <router-link class="sidebar-item" to="/">Commands</router-link>
             </p>
@@ -83,9 +85,13 @@ onUnmounted(() => ws.close())
     display: flex;
 }
 
+.brand {
+    height: fit-content;
+}
+
 .sidebar {
     margin-top: 0;
-    .brand {
+    .navbar-height {
         height: var(--navbar-height);
     }
 }
