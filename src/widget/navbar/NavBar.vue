@@ -43,7 +43,7 @@ const loginUrl = ref(app.appContext.config.globalProperties.$apiURL + "/api/logi
                         <a disabled>Logged in as {{ user.username }}</a>
                         <hr class="dropdown-divider"/>
                         <div class="flex-col dropdown-item group">
-                            <a class="btn small" @click="router.push('/dashboard')">Guilds</a>
+                            <a class="btn small" @click="router.push('/dashboard')">My Servers</a>
                             <a class="btn small" @click="logOut">Log Out</a>
                         </div>
                     </div>
