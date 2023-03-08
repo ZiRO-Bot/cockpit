@@ -16,14 +16,22 @@ const ws = new WebSocket("ws://127.0.0.1/api/ws")
 ws.onmessage = (event) => {
     const data = JSON.parse(event.data)
     console.debug(data)
-    if (guild.value == data.before.name)
-        guild.value = data.after.name
+
+    if (data.i)
+        return
+
+    if ((data.before && data.after) && guild.value.name == data.before.name)
+        guild.value.name = data.after.name
+    console.log(guild.value)
+}
+ws.onopen = (event) => {
+    ws.send(JSON.stringify({"t": "guild", "i": id.value}))
 }
 
 // Data
 const isLoading = ref(true)
 const id = ref(route.params.id)
-const guild = ref(null)
+const guild = ref({})
 
 // onMounted
 onMounted(() => {

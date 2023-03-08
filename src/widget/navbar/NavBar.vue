@@ -13,10 +13,6 @@ const store = useStore()
 const props = defineProps(["dashboard"])
 const inDashboard = computed(() => !!props.dashboard)
 
-async function logOut() {
-    store.dispatch("logOut")
-}
-
 // Data
 const isLoggedIn = computed(() => store.getters.isLoggedIn)
 const loginUrl = ref(app.appContext.config.globalProperties.$apiURL + "/api/login")

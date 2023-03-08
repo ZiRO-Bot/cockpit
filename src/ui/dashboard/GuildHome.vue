@@ -12,7 +12,7 @@ const props = defineProps(["guild"])
                 </h4>
             </div>
             <div class="card-content">
-                <GuildIcon :guild="guild"/>
+                <GuildIcon :guild="guild" :size="6"/>
             </div>
         </div>
         <div class="card guild-info">
@@ -22,7 +22,7 @@ const props = defineProps(["guild"])
                 </h4>
             </div>
             <div class="card-content">
-                <GuildIcon :guild="guild"/>
+                <GuildIcon :guild="guild" :size="6"/>
             </div>
         </div>
     </div>

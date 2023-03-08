@@ -8,6 +8,10 @@ import { ChevronDown } from "lucide-vue-next"
 const router = useRouter()
 const store = useStore()
 
+async function logOut() {
+    store.dispatch("logOut")
+}
+
 // Data
 const user = computed(() => store.getters.user)
 </script>
