@@ -20,7 +20,7 @@ const props = defineProps(["guild"])
             </div>
         </div>
 
-        <h2 class="row-title">Test</h2>
+        <h2>Test</h2>
 
         <div class="row full-w">
             <div class="col-4">

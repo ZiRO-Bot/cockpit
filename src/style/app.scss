@@ -247,13 +247,10 @@ code {
     width: 100%;
 }
 
-.row-title {
-    padding-left: 1rem;
-}
-
 .row {
     display: flex;
     flex-wrap: wrap;
+    margin-inline: -1rem;
 }
 
 .col-4, .col-6, .col-12 {
