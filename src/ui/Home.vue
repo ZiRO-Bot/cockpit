@@ -61,7 +61,7 @@ onMounted(() => {
                         <code>&gt;&gt;membercount</code> or
                         <code>&gt;&gt;verify</code>.</p>
                         <br/>
-                        <a class="btn">TagScript Documentation</a>
+                        <a class="btn info">Learn More</a>
                     </div>
                     <img class="zoomable" src="/static/screenshot-1.png"/>
                 </div>
