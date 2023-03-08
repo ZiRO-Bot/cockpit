@@ -10,6 +10,7 @@ const store = useStore()
 // Data
 let stats = reactive({ guilds: 0, users: 0, commands: 0 })
 const isLoggedIn = computed(() => store.state.isLoggedIn)
+const inviteLink = "https://discord.com/oauth2/authorize?client_id=740122842988937286&scope=bot&permissions=2080898294"
 
 // onCreated
 store.dispatch("updateLoginState")
@@ -42,7 +43,7 @@ onMounted(() => {
             </div>
 
             <div class="buttons">
-                <button class="btn" @click="goTo('dashboard')">Add to Discord</button>
+                <a class="btn" :href="inviteLink">Add to Discord</a>
                 <a class="btn info" href="#features">Features</a>
             </div>
         </div>
