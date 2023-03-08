@@ -100,12 +100,12 @@ const router = createRouter({
   routes: [
     {
       path: "/",
-      name: "home",
+      name: "Home",
       component: Home
     },
     {
         path: "/dashboard",
-        name: "DashboardRoot",
+        name: "GuildList",
         component: GuildList,
         meta: {
             requiresAuth: true,
@@ -114,7 +114,7 @@ const router = createRouter({
     },
     {
         path: "/dashboard/:id",
-        name: "DashboardGuild",
+        name: "Dashboard",
         component: Guild,
         meta: {
             requiresAuth: true,
