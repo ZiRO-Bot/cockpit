@@ -13,7 +13,7 @@ const getters = {
 
 const actions = {
     async getGuilds({commit}) {
-        await axios.get('/api/v1/@me/guilds')
+        await axios.get('/api/v1/@me/managed-guilds')
         .then((res) => {
             commit('setGuilds', res.data);
         })
