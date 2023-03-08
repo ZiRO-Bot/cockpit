@@ -5,24 +5,59 @@ const props = defineProps(["guild"])
 
 <template>
     <div class="content">
-        <div class="card guild-info">
-            <div class="card-title">
-                <h4 class="guild-stats">
-                    Server Stats
-                </h4>
-            </div>
-            <div class="card-content">
-                <GuildIcon :guild="guild" :size="6"/>
+        <div class="row full-w">
+            <div class="col-12">
+                <div class="card guild-info flex-col">
+                    <div class="card-title">
+                        <h4 class="guild-stats">
+                            Server Stats
+                        </h4>
+                    </div>
+                    <div class="card-content">
+                        <GuildIcon :guild="guild" :size="6"/>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="card guild-info">
-            <div class="card-title">
-                <h4 class="guild-stats">
-                    Server Stats
-                </h4>
+
+        <h2 class="row-title">Test</h2>
+
+        <div class="row full-w">
+            <div class="col-4">
+                <div class="card guild-info">
+                    <div class="card-title">
+                        <h4 class="guild-stats">
+                            Server Stats
+                        </h4>
+                    </div>
+                    <div class="card-content">
+                        <GuildIcon :guild="guild" :size="6"/>
+                    </div>
+                </div>
             </div>
-            <div class="card-content">
-                <GuildIcon :guild="guild" :size="6"/>
+            <div class="col-4">
+                <div class="card guild-info">
+                    <div class="card-title">
+                        <h4 class="guild-stats">
+                            Server Stats
+                        </h4>
+                    </div>
+                    <div class="card-content">
+                        <GuildIcon :guild="guild" :size="6"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card guild-info">
+                    <div class="card-title">
+                        <h4 class="guild-stats">
+                            Server Stats
+                        </h4>
+                    </div>
+                    <div class="card-content">
+                        <GuildIcon :guild="guild" :size="6"/>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -45,13 +80,10 @@ const props = defineProps(["guild"])
 
 .content {
     margin: 2rem;
-    gap: 2rem;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
-    > * {
-        flex: 1;
-    }
+    align-items: start;
     .guild-detailed-info {
         padding-inline: 50px;
         display: flex;
