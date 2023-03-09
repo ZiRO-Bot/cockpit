@@ -1,5 +1,5 @@
 import axios from "axios"
-import { getCookie, setCookie, deleteCookie } from "../utils/common.js"
+import { getCookie, setCookie, deleteCookie } from "@/utils/common.js"
 
 
 const state = () => ({

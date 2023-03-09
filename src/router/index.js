@@ -9,7 +9,6 @@ import GuildSettings from '../views/dashboard/GuildSettings.vue';
 import GuildUtility from '../views/dashboard/GuildUtility.vue';
 import Login from '../views/Login.vue';
 
-import store from '@/store';
 
 Vue.use(VueRouter)
 
@@ -71,30 +70,18 @@ const router = new VueRouter({
     },
 })
 
-router.beforeEach((to, from, next) => {
-    if (to.matched.some(record => record.meta.requiresAuth)) {
-        if (!store.getters.isLoggedIn) {
-            if (to.matched.some(record => record.meta.autoLogin)) {
-                window.location = window.apiURL + "/api/login";
-            }
-            window.scrollTo(0, 0) // scroll to the top
-            next('/');
-            return;
-        }
-    }
-    window.scrollTo(0, 0) // scroll to the top
-    next();
-});
-
 export default router
 */
 
 import { createRouter, createWebHistory } from "vue-router"
+import { loginUrl } from "@/utils/constant"
 import GuildList from "@/ui/GuildList.vue"
 import GuildHome from "@/ui/dashboard/GuildHome.vue"
 import GuildMeta from "@/ui/dashboard/GuildMeta.vue"
 import Guild from "@/ui/dashboard/Guild.vue"
 import Home from "@/ui/Home.vue"
+
+import store from '@/store';
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -134,5 +121,21 @@ const router = createRouter({
         },
     ],
 })
+
+router.beforeEach((to, from, next) => {
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+        if (!store.getters.isLoggedIn) {
+            if (to.matched.some(record => record.meta.autoLogin)) {
+                // TODO: Redirect to a page saying you must login to open this page
+                window.location = loginUrl 
+            }
+            window.scrollTo(0, 0) // scroll to the top
+            next('/')
+            return
+        }
+    }
+    window.scrollTo(0, 0) // scroll to the top
+    next()
+});
 
 export default router

@@ -17,13 +17,11 @@
 */
 
 import { createApp } from "vue"
-import { createStore } from 'vuex'
 import axios from 'axios'
 
 import App from "./App.vue"
 import router from "./router"
-import user from './store/user'
-import guilds from './store/guilds'
+import store from "./store"
 
 import './style/app.scss'
 
@@ -93,13 +91,6 @@ axios.interceptors.response.use(undefined, function (error) {
     }
 })
 */
-
-const store = createStore({
-    modules: {
-        user: user,
-        guilds: guilds,
-    },
-})
 
 const app = createApp(App)
 app.config.globalProperties.$apiURL = apiURL

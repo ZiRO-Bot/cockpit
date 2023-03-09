@@ -1,13 +1,13 @@
 <script setup>
-import { ref, computed, getCurrentInstance } from 'vue'
+import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
+import { loginUrl } from "@/utils/constant"
 import axios from 'axios'
 import Brand from "@/widget/Brand.vue"
 import UserDropdown from "@/widget/navbar/UserDropdown.vue"
 
 // Meta
-const app = getCurrentInstance()
 const router = useRouter()
 const store = useStore()
 const props = defineProps(["dashboard"])
@@ -15,7 +15,6 @@ const inDashboard = computed(() => !!props.dashboard)
 
 // Data
 const isLoggedIn = computed(() => store.getters.isLoggedIn)
-const loginUrl = ref(app.appContext.config.globalProperties.$apiURL + "/api/login")
 </script>
 
 <template>
