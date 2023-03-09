@@ -28,6 +28,12 @@ function getBotStats() {
         stats.users = data.users
         stats.commands = data.commands
     })
+    .catch((error) => {
+        if (error.response.status == 502)
+            return // Backend is down
+        else
+            console.error(error)
+    })
 }
 
 onMounted(() => {
