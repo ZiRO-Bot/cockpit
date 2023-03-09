@@ -8,6 +8,10 @@ import NavBar from "@/widget/navbar/NavBar.vue"
 // Meta
 const store = useStore()
 
+function toFeatures() {
+    document.getElementById("features").scrollIntoView()
+}
+
 // Data
 let stats = reactive({ guilds: 0, users: 0, commands: 0 })
 const isLoggedIn = computed(() => store.state.isLoggedIn)
@@ -44,7 +48,7 @@ onMounted(() => {
 
             <div class="buttons">
                 <a class="btn" :href="inviteLink">Add to Discord</a>
-                <a class="btn info" href="#features">Features</a>
+                <a class="btn info" @click="toFeatures">Features</a>
             </div>
         </div>
         <div class="botstats bg-darker">
