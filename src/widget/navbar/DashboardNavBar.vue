@@ -11,7 +11,7 @@ import UserDropdown from "@/widget/navbar/UserDropdown.vue"
 const app = getCurrentInstance()
 const router = useRouter()
 const store = useStore()
-const props = defineProps(["dashboard"])
+const props = defineProps(["dashboard", "guild", "isLoading"])
 const inDashboard = computed(() => !!props.dashboard)
 
 async function logOut() {
@@ -28,7 +28,7 @@ const loginUrl = ref(app.appContext.config.globalProperties.$apiURL + "/api/logi
         <div class="nav-item flex-grow">
         </div>
         <div class="nav-item position-relative" v-if="isLoggedIn" right>
-            <GuildDropdown />
+            <GuildDropdown :guild="guild" :isLoading="isLoading" />
             <UserDropdown />
         </div>
         <a class="btn small" :href="loginUrl" v-else>Login</a>

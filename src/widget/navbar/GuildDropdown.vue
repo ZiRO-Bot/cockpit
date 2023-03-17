@@ -1,41 +1,25 @@
 <script setup>
-import { computed, ref, onMounted } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { ChevronDown } from "lucide-vue-next"
 import GuildIcon from "@/widget/guild/GuildIcon.vue"
 import Spinner from "@/widget/Spinner.vue"
 
 // Meta
-const route = useRoute()
+const props = defineProps(["guild", "isLoading"])
+
 const router = useRouter()
 const store = useStore()
-
-// Data
-const isLoading = ref(true)
-const id = ref(route.params.id)
-const guild = ref({})
-
-// onMounted
-onMounted(() => {
-    store.dispatch("getGuilds").then(() => {
-        const g = store.getters.guilds.find(x => x.id == id.value)
-        if (!g) {
-            router.push("/dashboard")
-        } else {
-            guild.value = g
-            isLoading.value = false
-        }
-    })
-})
 </script>
 
 <template>
     <details class="dropdown position-relative">
         <summary class="flex-v-center">
-            <Spinner v-if="isLoading" size="32" />
-            <GuildIcon v-else :guild="guild" size="32"/>
-            <a class="guild-name">{{ guild.name }}</a>
+            <Spinner v-if="isLoading" size="32" stroke-width="3"/>
+            <div v-else class="flex-row flex-v-center">
+                <GuildIcon :guild="guild" size="32"/>
+                <a class="guild-name">{{ guild.name }}</a>
+            </div>
             <ChevronDown class="ic" size="20"/>
         </summary>
         <div class="dropdown-menu" style="width: 180px;">

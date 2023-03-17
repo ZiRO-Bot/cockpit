@@ -71,7 +71,7 @@ onUnmounted(() => ws.close())
             </aside>
         </div>
         <div class="main">
-            <DashboardNavBar />
+            <DashboardNavBar :guild="guild" :isLoading="isLoading" />
             <div class="container">
                 <div class="loading flex-v-center flex-h-center" v-if="isLoading">
                     <Spinner />
