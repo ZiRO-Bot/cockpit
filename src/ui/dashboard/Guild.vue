@@ -83,6 +83,14 @@ onUnmounted(() => ws.close())
 </template>
 
 <style lang="scss" scoped>
+.container .content {
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: start;
+}
+
 .dashboard {
     display: flex;
 }

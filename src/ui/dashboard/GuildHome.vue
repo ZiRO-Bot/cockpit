@@ -86,25 +86,6 @@ const props = defineProps(["guild"])
 </template>
 
 <style lang="scss" scoped>
-.card {
-    background-color: var(--bg-dark);
-    border-radius: 1rem;
-    margin-bottom: 2rem;
-    > *:not([full-w]) {
-        margin-inline: 1.5rem;
-    }
-    .card-title, .card-content {
-        display: flex;
-    }
-    .card-title > * {
-        margin-top: 2rem;
-        margin-bottom: 0;
-    }
-    .card-content {
-        padding-block: 2rem;
-    }
-}
-
 .guild-stats {
     .guild-stat {
         > *:not(:last-child) {
@@ -117,25 +98,6 @@ const props = defineProps(["guild"])
         .stat {
             font-size: 2em;
             font-weight: 700;
-        }
-    }
-}
-
-.content {
-    margin: 2rem;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: start;
-    .dashboard-menus {
-        margin-top: 25px;
-        padding-block: 12px;
-        a {
-            color: var(--light) !important;
-            text-decoration: none !important;
-        }
-        a:not(:last-child) {
-            margin-right: 45px;
         }
     }
 }

@@ -77,6 +77,7 @@ import { createRouter, createWebHistory } from "vue-router"
 import { loginUrl } from "@/utils/constant"
 import GuildList from "@/ui/GuildList.vue"
 import GuildHome from "@/ui/dashboard/GuildHome.vue"
+import GuildEmbed from "@/ui/dashboard/GuildEmbed.vue"
 import GuildMeta from "@/ui/dashboard/GuildMeta.vue"
 import Guild from "@/ui/dashboard/Guild.vue"
 import Home from "@/ui/Home.vue"
@@ -116,6 +117,10 @@ const router = createRouter({
                 {
                     path: "meta",
                     component: GuildMeta,
+                },
+                {
+                    path: "embed",
+                    component: GuildEmbed,
                 },
             ],
         },

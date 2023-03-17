@@ -289,3 +289,70 @@ code {
 .t-align-s {
     text-align: start;
 }
+
+.card {
+    background-color: var(--bg-dark);
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    > *:not([full-w]) {
+        margin-inline: 1.5rem;
+    }
+    .card-title, .card-content, .card-body {
+        @include flex;
+    }
+    .card-title > * {
+        margin-top: 2rem;
+        margin-bottom: 0;
+    }
+    .card-content {
+        padding-block: 2rem;
+    }
+}
+
+.bot-gap-2 {
+    margin-bottom: 1rem;
+}
+
+.input {
+    @extend .flex-col;
+    background: var(--bg-dark-secondary);
+    border-radius: 1rem;
+    padding-top: 0.8rem;
+    span#label {
+        @extend .unselectable;
+        margin-inline: 1rem;
+        font-size: 0.8em;
+        font-weight: 700;
+        text-align: start;
+    }
+    input[type="text"] {
+        @extend .full-h;
+        font-size: 1em;
+        font-weight: 300;
+        background: transparent;
+        border: 0;
+        box-shadow: none !important;
+        outline: none;
+        padding-inline: 1rem;
+        padding-top: 0.4rem;
+        padding-bottom: 0.8rem;
+    }
+}
+
+.dsc-embed {
+    @extend .full-w;
+    border-left: 4px solid blue;
+    background: #2B2D31;
+    border-radius: 4px;
+    text-align: start;
+    .dsc-grid-container {
+        .dsc-grid {
+            display: grid;
+            padding: 0.5rem 1rem 1rem 0.75rem;
+            overflow: hidden;
+            .dsc-embed-margin {
+                margin-top: 8px;
+            }
+        }
+    }
+}
