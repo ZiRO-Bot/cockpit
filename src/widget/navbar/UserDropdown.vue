@@ -21,8 +21,6 @@ const user = computed(() => store.getters.user)
         <summary class="flex-v-center">
             <img class="rounded-icon"
                 :src="user.avatar"
-                width="31"
-                height="31"
             />
             <ChevronDown class="ic" size="20"/>
         </summary>
@@ -38,6 +36,11 @@ const user = computed(() => store.getters.user)
 </template>
 
 <style scoped>
+img {
+    width: 2rem;
+    aspect-ratio: 1;
+}
+
 .dropdown-menu > a {
     padding-inline: 0.5rem;
 }
