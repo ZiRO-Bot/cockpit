@@ -249,6 +249,10 @@ code {
     width: 100%;
 }
 
+.full-h {
+    height: 100%;
+}
+
 .row {
     display: flex;
     flex-wrap: wrap;
@@ -275,3 +279,13 @@ code {
     max-width: 33.333333%;
 }
 
+.icon {
+    aspect-ratio: 1 / 1;
+    padding: 1rem;
+    background: var(--bg-dark-secondary);
+    border-radius: 1rem;
+}
+
+.t-align-s {
+    text-align: start;
+}

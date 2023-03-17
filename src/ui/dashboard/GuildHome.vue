@@ -1,5 +1,7 @@
 <script setup>
 import GuildIcon from "@/widget/guild/GuildIcon.vue"
+import { Users, Hash, Volume2 } from "lucide-vue-next"
+
 const props = defineProps(["guild"])
 </script>
 
@@ -8,20 +10,40 @@ const props = defineProps(["guild"])
         <div class="row full-w">
             <div class="col-12">
                 <div class="card guild-info flex-col">
-                    <div class="card-title">
-                        <h4 class="guild-stats">
-                            Server Stats
-                        </h4>
-                    </div>
                     <div class="card-content">
-                        <GuildIcon :guild="guild" :size="6"/>
+                        <div class="flex guild-stats full-w">
+                            <div class="flex guild-stat full-w flex-h-center">
+                                <div class="icon flex-h-center flex-v-center">
+                                    <Users size="32" stroke-width="2.5" />
+                                </div>
+                                <div class="flex-col flex-h-center">
+                                    <h4 class="t-align-s stat-title">Members</h4>
+                                    <a class="t-align-s stat">{{ guild.stats.members }}</a>
+                                </div>
+                            </div>
+                            <div class="flex guild-stat full-w flex-h-center">
+                                <div class="icon flex-h-center flex-v-center">
+                                    <Hash size="32" stroke-width="2.5" />
+                                </div>
+                                <div class="flex-col flex-h-center">
+                                    <h4 class="t-align-s stat-title">Text Channels</h4>
+                                    <a class="t-align-s stat">{{ guild.stats.textChannels }}</a>
+                                </div>
+                            </div>
+                            <div class="flex guild-stat full-w flex-h-center">
+                                <div class="icon flex-h-center flex-v-center">
+                                    <Volume2 size="32" stroke-width="2.5" />
+                                </div>
+                                <div class="flex-col flex-h-center">
+                                    <h4 class="t-align-s stat-title">Voice Channels</h4>
+                                    <a class="t-align-s stat">{{ guild.stats.voiceChannels }}</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <h2>Test</h2>
-
         <div class="row full-w">
             <div class="col-4">
                 <div class="card guild-info">
@@ -67,14 +89,35 @@ const props = defineProps(["guild"])
 .card {
     background-color: var(--bg-dark);
     border-radius: 1rem;
+    margin-bottom: 2rem;
     > *:not([full-w]) {
-        margin-inline: 2rem;
+        margin-inline: 1.5rem;
     }
     .card-title, .card-content {
         display: flex;
     }
+    .card-title > * {
+        margin-top: 2rem;
+        margin-bottom: 0;
+    }
     .card-content {
         padding-block: 2rem;
+    }
+}
+
+.guild-stats {
+    .guild-stat {
+        > *:not(:last-child) {
+            margin-right: 1rem;
+        }
+        h4 {
+            margin: 0;
+            font-weight: 400;
+        }
+        .stat {
+            font-size: 2em;
+            font-weight: 700;
+        }
     }
 }
 
@@ -84,25 +127,6 @@ const props = defineProps(["guild"])
     flex-direction: column;
     flex-wrap: wrap;
     align-items: start;
-    .guild-detailed-info {
-        padding-inline: 50px;
-        display: flex;
-        justify-content: start;
-        align-items: center;
-        margin-top: 20px;
-        & > .guild-stats {
-            margin-left: 20px;
-            & > p {
-                text-align: start;
-                margin-bottom: 0px;
-            }
-            & > .guild-name {
-                font-weight: bold;
-                color: var(--light) !important;
-                text-decoration: none !important;
-            }
-        }
-    }
     .dashboard-menus {
         margin-top: 25px;
         padding-block: 12px;

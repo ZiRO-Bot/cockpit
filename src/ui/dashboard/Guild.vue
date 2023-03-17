@@ -100,10 +100,11 @@ onUnmounted(() => ws.close())
     }
     .btn {
         padding-block: 0.8rem !important;
+        margin-inline: 1rem;
         border-radius: 1rem;
         background-color: transparent !important;
         &.router-link-exact-active {
-            background-color: var(--bg-dark-btn) !important;
+            background-color: var(--bg-dark-secondary) !important;
         }
         &:hover {
             color: var(--light-gray);
