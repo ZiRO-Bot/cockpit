@@ -31,10 +31,10 @@ onMounted(() => {
 </script>
 
 <template>
-    <details class="dropdown">
+    <details class="dropdown position-relative">
         <summary class="flex-v-center">
-            <Spinner v-if="isLoading" />
-            <GuildIcon v-else :guild="guild" :size="2"/>
+            <Spinner v-if="isLoading" size="32" />
+            <GuildIcon v-else :guild="guild" size="32"/>
             <a class="guild-name">{{ guild.name }}</a>
             <ChevronDown class="ic" size="20"/>
         </summary>
@@ -48,13 +48,15 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
-summary {
-    a.guild-name {
-        padding-left: 0.5rem;
-    }
-    .dropdown-menu > a {
-        padding-left: 0.5rem;
-    }
+.dropdown {
     margin-right: 2rem;
+    summary {
+        a.guild-name {
+            padding-left: 0.5rem;
+        }
+        .dropdown-menu > a {
+            padding-left: 0.5rem;
+        }
+    }
 }
 </style>

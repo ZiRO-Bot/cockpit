@@ -2,7 +2,7 @@
 import { reactive, ref, computed, getCurrentInstance, onMounted, watch } from "vue"
 const props = defineProps(["guild", "size"])
 
-const size = computed(() => props.size || 10)
+const size = computed(() => props.size || 160)
 const guild = computed(() => props.guild || {})
 </script>
 
@@ -12,12 +12,15 @@ const guild = computed(() => props.guild || {})
             class="rounded-icon"
             v-if="guild.icon"
             :src="guild.icon"
-            :style="{'--g-ic-size': size + 'rem'}"
+            :width="size"
+            :height="size"
         />
         <div
             class="rounded-icon guild-initials unselectable"
             v-else
-            :style="{'--g-ic-size': size + 'rem', '--g-ic-font-size': (size/4) + 'em'}"
+            :style="{'--g-ic-size': size + 'px', '--g-ic-font-size': (size/4) + 'px'}"
+            :width="size"
+            :height="size"
         >
             <span>{{ guild.name.getInitials() }}</span>
         </div>
@@ -28,10 +31,6 @@ const guild = computed(() => props.guild || {})
 .guild-icon {
     display: flex;
     justify-content: center;
-    img {
-        width: var(--g-ic-size);
-        height: var(--g-ic-size);
-    }
     .guild-initials {
         background: var(--discord-blurple);
         display: flex;

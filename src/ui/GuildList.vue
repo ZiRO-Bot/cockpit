@@ -33,12 +33,12 @@ onMounted(() => {
 <template>
     <NavBar />
     <div id="guilds">
-        <section class="card" bg-variant="transparent">
+        <section class="-card" bg-variant="transparent">
             <header>
                 <h2 class="mb-0">Select a Server</h2>
             </header>
 
-            <div class="card-body guild-list">
+            <div class="-card-body guild-list">
                 <div class="guild" v-for="guild in guilds" :key="guild">
                     <GuildIcon :guild="guild"/>
                     <div class="guild-info">
