@@ -13,6 +13,10 @@ const store = useStore()
 const props = defineProps(["dashboard"])
 const inDashboard = computed(() => !!props.dashboard)
 
+function openLogin() {
+    window.open(loginUrl, "_blank")
+}
+
 // Data
 const isLoggedIn = computed(() => store.getters.isLoggedIn)
 </script>
@@ -25,7 +29,9 @@ const isLoggedIn = computed(() => store.getters.isLoggedIn)
         <div class="nav-item position-relative" v-if="isLoggedIn" right>
             <UserDropdown />
         </div>
-        <a class="btn small" :href="loginUrl" v-else>Login</a>
+        <button class="btn small" @click="openLogin" v-else>
+            Login
+        </button>
     </div>
 </template>
 
