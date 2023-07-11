@@ -42,7 +42,7 @@ export const NavBar = () => {
                     </div>
                     <a>Hello</a>
                     <button
-                        className="w-12 h-12 flex rounded-full items-center justify-center active:scale-95 transition-transform hover:bg-gray-300 dark:hover:bg-gray-50/[0.1]"
+                        className="w-12 h-12 flex rounded-full items-center justify-center active:scale-95 transition-transform hover:bg-gray-200 dark:hover:bg-gray-50/[0.1]"
                         onClick={toggleDarkMode}>
                         {theme === Theme.DARK ? <Moon strokeWidth={3} /> : <Sun strokeWidth={3} />}
                     </button>
