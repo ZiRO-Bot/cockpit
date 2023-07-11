@@ -4,7 +4,7 @@ import { Moon, Sun } from "lucide-react"
 import Image from "next/image"
 import { useEffect, useState } from "react"
 import { Spinner } from "./spinner"
-import logo from "/public/static/logo.png"
+import mascot from "/public/mascot.svg"
 
 export const NavBar = () => {
     const [isStuck, setIsStuck] = useState(false)
@@ -33,7 +33,13 @@ export const NavBar = () => {
                     (isStuck ? " shadow-border-like dark:shadow-border-like-dark" : "")
                 }>
                 <div className="h-16 w-full flex items-center font-bold">
-                    <Image alt="Bot's logo" src={logo} className="h-12 w-12 rounded-xl" />
+                    <div className="h-12 w-12 flex items-center justify-center">
+                        <Image
+                            alt="Bot's logo"
+                            src={mascot}
+                            className="h-8 w-8 mb-1.5 dark:invert"
+                        />
+                    </div>
                     <a>Hello</a>
                     <button
                         className="w-12 h-12 flex rounded-full items-center justify-center active:scale-95 transition-transform hover:bg-gray-300 dark:hover:bg-gray-50/[0.1]"
