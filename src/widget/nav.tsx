@@ -32,7 +32,7 @@ export const NavBar = () => {
                     "backdrop-blur px-1.5 lg:px-4 bg-white/60 dark:bg-dark/60 transition-shadow duration-300" +
                     (isStuck ? " shadow-border-like dark:shadow-border-like-dark" : "")
                 }>
-                <div className="h-16 w-full flex items-center font-semibold">
+                <div className="h-16 w-full flex items-center font-bold">
                     <Image alt="Bot's logo" src={logo} className="h-12 w-12 rounded-xl" />
                     <a>Hello</a>
                     <button
