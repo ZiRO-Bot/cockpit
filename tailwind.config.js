@@ -2,9 +2,8 @@
 module.exports = {
     content: [
         "./src/ui/**/*.{js,ts,jsx,tsx,mdx}",
+        "./src/widget/**/*.{js,ts,jsx,tsx,mdx}",
         "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-        "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-        "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     ],
     theme: {
         extend: {
@@ -14,7 +13,7 @@ module.exports = {
                     "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
             },
             fontFamily: {
-                sans: ["var(--font-inter)"],
+                sans: ["var(--font-inter)", "Inter", "sans-serif"],
             },
         },
     },
