@@ -19,6 +19,10 @@ module.exports = {
             colors: {
                 dark: "#0E1418",
             },
+            animation: {
+                spinner:
+                    "1.2s cubic-bezier(0.32, 0.65, 0.71, 0.4) 0s infinite normal none running spin",
+            },
         },
     },
     plugins: [],

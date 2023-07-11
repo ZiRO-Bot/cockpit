@@ -1,6 +1,7 @@
 import useDarkMode from "@/lib/hooks/mode"
 import Image from "next/image"
 import { useEffect, useState } from "react"
+import { Spinner } from "./spinner"
 import logo from "/public/static/logo.png"
 
 export const NavBar = () => {
@@ -33,6 +34,7 @@ export const NavBar = () => {
                     <Image alt="Bot's logo" src={logo} className="h-12 w-12 rounded-xl" />
                     <a>Hello</a>
                     <button onClick={toggleDarkMode}>Test</button>
+                    <Spinner size={48} strokeWidth={4} className="p-2" />
                 </div>
             </nav>
         </div>

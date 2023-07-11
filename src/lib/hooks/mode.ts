@@ -21,7 +21,6 @@ const useDarkMode = () => {
     }, [])
 
     useIsomorphicLayoutEffect(() => {
-        console.log(theme)
         localStorage.theme = theme
         update()
     }, [theme])
