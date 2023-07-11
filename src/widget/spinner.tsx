@@ -19,7 +19,7 @@ export const Spinner = ({
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className={"flex animate-spinner " + className}>
+                className={"animate-spinner overflow-visible " + className}>
                 <path
                     d="M23 12C23 18.0751 18.0751 23 12 23"
                     stroke={color}
