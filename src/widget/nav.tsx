@@ -28,9 +28,7 @@ export const NavBar = () => {
             <nav
                 className={
                     "backdrop-blur px-1.5 lg:px-4 bg-white/60 dark:bg-dark/60 transition-shadow duration-300" +
-                    (isStuck
-                        ? " shadow-[0_16px_32px_-16px_rgba(0,0,0,.1),0_0_0_1px_rgba(0,0,0,.1)] dark:shadow-[0_16px_32px_-16px_rgba(0,0,0,.1),0_0_0_1px_hsla(0,0%,100%,.08)]"
-                        : "")
+                    (isStuck ? " shadow-border-like dark:shadow-border-like-dark" : "")
                 }>
                 <div className="h-16 w-full flex items-center">
                     <Image alt="Bot's logo" src={logo} className="h-12 w-12 rounded-xl" />
