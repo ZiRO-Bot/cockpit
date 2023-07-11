@@ -27,8 +27,10 @@ export const NavBar = () => {
         <div className="z-50 sticky top-0">
             <nav
                 className={
-                    "backdrop-blur px-1.5 lg:px-4 bg-white/80 dark:bg-dark/80" +
-                    (isStuck ? " border-b border-solid border-black" : "")
+                    "backdrop-blur px-1.5 lg:px-4 bg-white/60 dark:bg-dark/60 transition-colors duration-300" +
+                    (isStuck
+                        ? " border-b border-solid border-gray-200 dark:border-dark-alt"
+                        : " border-b border-transparent")
                 }>
                 <div className="h-16 w-full flex items-center">
                     <Image alt="Bot's logo" src={logo} className="h-12 w-12 rounded-xl" />

@@ -18,6 +18,7 @@ module.exports = {
             },
             colors: {
                 dark: "#0E1418",
+                "dark-alt": "#272C30",
             },
             animation: {
                 spinner:

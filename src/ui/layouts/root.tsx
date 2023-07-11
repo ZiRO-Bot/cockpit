@@ -8,5 +8,9 @@ const inter = Inter({
 })
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-    return <body className={`${inter.variable} font-sans`}>{children}</body>
+    return (
+        <body className={`${inter.variable} font-sans dark:text-white dark:bg-dark`}>
+            {children}
+        </body>
+    )
 }
