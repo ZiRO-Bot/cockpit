@@ -36,7 +36,7 @@ export const NavBar = () => {
                     <Image alt="Bot's logo" src={logo} className="h-12 w-12 rounded-xl" />
                     <a>Hello</a>
                     <button
-                        className="w-8 h-8 flex rounded-full items-center justify-center active:scale-95 transition-transform hover:bg-gray-300 dark:hover:bg-gray-50/[0.2]"
+                        className="w-12 h-12 flex rounded-full items-center justify-center active:scale-95 transition-transform hover:bg-gray-300 dark:hover:bg-gray-50/[0.1]"
                         onClick={toggleDarkMode}>
                         {theme === Theme.DARK ? <Moon strokeWidth={3} /> : <Sun strokeWidth={3} />}
                     </button>
