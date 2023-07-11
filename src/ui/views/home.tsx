@@ -35,12 +35,12 @@ export const HomeView: NextPage = () => {
                     <p className="text-4xl font-medium">An open-source discord bot</p>
                     <div className="mt-8 gap-3 flex flex-col sm:flex-row">
                         <a
-                            className="text-lg font-bold py-3 px-4 sm:px-6 transition-colors bg-sky-500 hover:bg-opacity-80 rounded-full"
+                            className="text-md font-bold py-4 px-6 sm:px-8 transition-colors bg-sky-500 hover:bg-opacity-80 rounded-full"
                             href="#">
                             Add to Server
                         </a>
                         <a
-                            className="text-lg font-bold py-3 px-4 sm:px-6 transition-colors hover:bg-gray-200/[0.75] dark:hover:bg-gray-50/[0.02] rounded-full shadow-border-like dark:shadow-border-like-dark-btn"
+                            className="text-md font-bold py-4 px-6 sm:px-8 transition-colors hover:bg-gray-200/[0.75] dark:hover:bg-gray-50/[0.02] rounded-full shadow-border-like dark:shadow-border-like-dark-btn"
                             href="#">
                             See Features
                         </a>
