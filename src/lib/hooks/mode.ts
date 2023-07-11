@@ -11,7 +11,7 @@ const update = () => {
     }
 }
 
-const useDarkMode = () => {
+const useDarkMode: () => [Theme, () => void] = () => {
     //false is lightMode true is darkMode
     const [theme, setTheme] = useState(Theme.DARK)
 
