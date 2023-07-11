@@ -22,7 +22,7 @@ export const HomeView: NextPage = () => {
                             Add to Server
                         </a>
                         <a
-                            className="text-md font-bold py-4 px-6 sm:px-8 transition-colors hover:bg-gray-200/[0.75] dark:hover:bg-gray-50/[0.02] rounded-full shadow-border-like dark:shadow-border-like-dark-btn"
+                            className="text-md font-bold py-4 px-6 sm:px-8 transition-[background-color] hover:bg-gray-200/[0.75] dark:hover:bg-gray-50/[0.02] rounded-full shadow-border-like dark:shadow-border-like-dark-btn"
                             href="#">
                             See Features
                         </a>
