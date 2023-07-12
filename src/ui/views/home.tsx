@@ -2,16 +2,12 @@
 
 import LandingLayout from "@/ui/layouts/landing"
 import type { NextPage } from "next"
-import Head from "next/head"
 import Image from "next/image"
 import mascot from "/public/mascot.svg"
 
 const HomeView: NextPage = () => {
     return (
         <>
-            <Head>
-                <title>Z3R0 - An open-source discord bot</title>
-            </Head>
             <LandingLayout>
                 <div className="mx-5 mt-12 lg:mt-24 mb-20 lg:mb-32 flex flex-col items-center justify-center">
                     <Image alt="The bot (Z3R0)" className="w-32 h-32 dark:invert" src={mascot} />
