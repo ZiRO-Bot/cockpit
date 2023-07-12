@@ -23,8 +23,8 @@ export const Spinner = ({
                 className={`${className} animate-spinner overflow-visible stroke-${color} dark:stroke-${darkColor}`}>
                 <path
                     d="M23 12C23 18.0751 18.0751 23 12 23"
-                    stroke-width={strokeWidth}
-                    stroke-linecap="round"
+                    strokeWidth={strokeWidth}
+                    strokeLinecap="round"
                 />
             </svg>
         </>

@@ -1,5 +1,6 @@
+"use client"
+
 import useDarkMode from "@/lib/hooks/mode"
-import Theme from "@/model/theme"
 import { Moon, Sun } from "lucide-react"
 import Image from "next/image"
 import { useEffect, useState } from "react"
@@ -8,7 +9,7 @@ import mascot from "/public/mascot.svg"
 
 export const NavBar = () => {
     const [isStuck, setIsStuck] = useState(false)
-    const [theme, toggleDarkMode] = useDarkMode()
+    const [_, toggleDarkMode] = useDarkMode()
 
     useEffect(() => {
         function onScroll() {
@@ -44,7 +45,8 @@ export const NavBar = () => {
                     <button
                         className="w-12 h-12 flex rounded-full items-center justify-center active:scale-95 transition-transform hover:bg-gray-200 dark:hover:bg-gray-50/[0.1]"
                         onClick={toggleDarkMode}>
-                        {theme === Theme.DARK ? <Moon strokeWidth={3} /> : <Sun strokeWidth={3} />}
+                        <Moon className="hidden dark:flex" strokeWidth={3} />
+                        <Sun className="dark:hidden flex" strokeWidth={3} />
                     </button>
                     <Spinner size={48} strokeWidth={3} className="p-2" />
                 </div>

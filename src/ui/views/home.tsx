@@ -1,10 +1,12 @@
+"use client"
+
 import LandingLayout from "@/ui/layouts/landing"
 import type { NextPage } from "next"
 import Head from "next/head"
 import Image from "next/image"
 import mascot from "/public/mascot.svg"
 
-export const HomeView: NextPage = () => {
+const HomeView: NextPage = () => {
     return (
         <>
             <Head>
@@ -32,3 +34,5 @@ export const HomeView: NextPage = () => {
         </>
     )
 }
+
+export default HomeView

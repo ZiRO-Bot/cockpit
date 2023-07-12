@@ -1,35 +1,42 @@
-import Theme from "@/model/theme"
-import { useState } from "react"
-import { useIsomorphicLayoutEffect } from "./layout"
+"use client"
 
-const update = () => {
-    console.log(localStorage.theme)
-    if (localStorage.theme === Theme.DARK) {
+import Theme from "@/model/theme"
+import { getCookie, setCookie } from "cookies-next"
+import { useEffect, useState } from "react"
+
+const update = (theme: Theme) => {
+    if (theme === Theme.DARK) {
         document.documentElement.classList.add(Theme.DARK)
     } else {
         document.documentElement.classList.remove(Theme.DARK)
     }
 }
 
-const useDarkMode: () => [Theme, () => void] = () => {
-    //false is lightMode true is darkMode
-    const [theme, setTheme] = useState(Theme.DARK)
+const useDarkMode: (serverTheme?: Theme) => [Theme, () => void] = (
+    serverTheme: Theme = Theme.DARK,
+) => {
+    const [theme, setTheme] = useState(serverTheme)
+    let clientTheme = getCookie("theme")
 
-    useIsomorphicLayoutEffect(() => {
-        const theme = localStorage.theme
-        if (theme === Theme.DARK || theme === Theme.LIGHT) setTheme(theme)
+    useEffect(() => {
+        if (clientTheme === undefined) clientTheme = localStorage.theme
+        if (clientTheme === Theme.DARK || clientTheme === Theme.LIGHT) setTheme(clientTheme)
     }, [])
 
-    useIsomorphicLayoutEffect(() => {
+    useEffect(() => {
+        update(theme)
         localStorage.theme = theme
-        update()
+        setCookie("theme", theme, {
+            sameSite: "lax",
+            httpOnly: false,
+        })
     }, [theme])
 
-    function changeTheme() {
+    function toggleDarkMode() {
         setTheme((oldTheme) => (oldTheme === Theme.DARK ? Theme.LIGHT : Theme.DARK))
     }
 
-    return [theme, changeTheme]
+    return [theme, toggleDarkMode]
 }
 
 export default useDarkMode
