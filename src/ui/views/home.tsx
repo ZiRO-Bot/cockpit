@@ -14,7 +14,7 @@ const HomeView: NextPage = () => {
                 <Image alt="The bot (Z3R0)" className="w-32 h-32 dark:invert" src={mascot} />
                 <h1 className="mt-8 mb-4 text-5xl font-bold">Z3R0</h1>
                 <p className="text-4xl text-center font-medium">An open-source discord bot</p>
-                <div className="mt-8 gap-3 flex flex-col sm:flex-row">
+                <div className="mt-8 gap-3 w-full sm:w-auto text-center flex flex-col sm:flex-row">
                     <Button
                         buttonType={ButtonType.PRIMARY}
                         href="#"

@@ -3,6 +3,7 @@
 import useDarkMode from "@/lib/hooks/mode"
 import { Moon, Sun } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 import { useEffect, useState } from "react"
 import { Spinner } from "./spinner"
 import mascot from "/public/mascot.svg"
@@ -35,11 +36,13 @@ export const NavBar = () => {
                 }>
                 <div className="h-16 w-full flex items-center font-bold">
                     <div className="h-12 w-12 flex items-center justify-center">
-                        <Image
-                            alt="Bot's logo"
-                            src={mascot}
-                            className="h-8 w-8 mb-1.5 dark:invert"
-                        />
+                        <Link href="/">
+                            <Image
+                                alt="Bot's logo"
+                                src={mascot}
+                                className="h-8 w-8 pb-1.5 dark:invert"
+                            />
+                        </Link>
                     </div>
                     <a>Hello</a>
                     <button

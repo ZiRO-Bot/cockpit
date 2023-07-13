@@ -20,7 +20,8 @@ const Button = ({
     onClick = undefined,
     ...args
 }: ButtonProps) => {
-    let builder = "text-md font-bold py-4 px-6 sm:px-8 transition-[background-color] rounded-full "
+    let builder =
+        "text-md font-bold py-4 px-6 sm:px-8 transition-[background-color] rounded-full active:scale-95 transition-transform "
     switch (buttonType) {
         case ButtonType.PRIMARY:
             builder += "bg-sky-500 hover:bg-opacity-80 text-white"
