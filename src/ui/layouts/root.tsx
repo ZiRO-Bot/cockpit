@@ -2,7 +2,7 @@
 
 import store from "@/data/store"
 import useDarkMode from "@/lib/hooks/mode"
-import Theme from "@/model/theme"
+import Theme from "@/model/enum/theme"
 import { ReactNode } from "react"
 import { Provider } from "react-redux"
 

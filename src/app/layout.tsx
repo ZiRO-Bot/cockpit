@@ -1,5 +1,5 @@
 import { getServerCookie } from "@/lib/server-cookie"
-import Theme from "@/model/theme"
+import Theme from "@/model/enum/theme"
 import RootLayout from "@/ui/layouts/root"
 import { Metadata } from "next"
 import { ReactNode } from "react"

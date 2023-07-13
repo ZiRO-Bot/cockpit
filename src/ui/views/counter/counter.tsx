@@ -1,6 +1,8 @@
 "use client"
 
+import ButtonType from "@/model/enum/button-type"
 import LandingLayout from "@/ui/layouts/landing"
+import Button from "@/widget/button"
 import type { NextPage } from "next"
 import useCounterViewModel from "./counter-view-model"
 
@@ -8,17 +10,23 @@ const CounterView: NextPage = () => {
     const viewModel = useCounterViewModel()
 
     return (
-        <>
-            <LandingLayout>
-                <button aria-label="Increment value" onClick={() => viewModel.increment()}>
+        <LandingLayout>
+            <div className="m-4">
+                <Button
+                    buttonType={ButtonType.OUTLINE}
+                    onClick={() => viewModel.increment()}
+                    aria-label="Increment value">
                     Increment
-                </button>
+                </Button>
                 <span>{viewModel.count}</span>
-                <button aria-label="Decrement value" onClick={() => viewModel.decrement()}>
+                <Button
+                    buttonType={ButtonType.OUTLINE}
+                    onClick={() => viewModel.decrement()}
+                    aria-label="Decrement value">
                     Decrement
-                </button>
-            </LandingLayout>
-        </>
+                </Button>
+            </div>
+        </LandingLayout>
     )
 }
 

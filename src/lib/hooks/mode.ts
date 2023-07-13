@@ -1,6 +1,6 @@
 "use client"
 
-import Theme from "@/model/theme"
+import Theme from "@/model/enum/theme"
 import { getCookie, setCookie } from "cookies-next"
 import { useEffect, useState } from "react"
 

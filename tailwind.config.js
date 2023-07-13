@@ -26,6 +26,7 @@ module.exports = {
             },
             boxShadow: {
                 "border-like": "0 16px 32px -16px rgba(0,0,0,.1),0 0 0 1px rgba(0,0,0,.1)",
+                "border-like-btn": "0 16px 32px -16px rgba(0,0,0,.1),0 0 0 1px rgba(0,0,0,.2)",
                 "border-like-dark":
                     "0 16px 32px -16px rgba(0,0,0,.1),0 0 0 1px hsla(0,0%,100%,.08)",
                 "border-like-dark-btn":
