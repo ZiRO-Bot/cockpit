@@ -12,11 +12,11 @@ const update = (theme: Theme) => {
     }
 }
 
-const useDarkMode: (serverTheme?: Theme) => [Theme, () => void] = (
-    serverTheme: Theme = Theme.DARK,
+const useDarkMode: (serverTheme?: Theme | undefined) => [Theme, () => void] = (
+    serverTheme: Theme | undefined,
 ) => {
-    const [theme, setTheme] = useState(serverTheme)
-    const clientTheme = getCookie("theme")
+    const clientTheme = getCookie("theme") as Theme
+    const [theme, setTheme] = useState(serverTheme || clientTheme || Theme.DARK)
 
     useEffect(() => {
         if (clientTheme === Theme.DARK || clientTheme === Theme.LIGHT) setTheme(clientTheme)
