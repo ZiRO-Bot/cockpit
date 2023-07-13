@@ -5,6 +5,7 @@ import ButtonType from "@/model/enum/button-type"
 import { Moon, Sun } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
 import Button from "./buttons/button"
 import IconButton from "./buttons/icon-button"
@@ -14,6 +15,7 @@ import mascot from "/public/mascot.svg"
 export const NavBar = () => {
     const [isStuck, setIsStuck] = useState(false)
     const [_, toggleDarkMode] = useDarkMode()
+    const pathname = usePathname()
 
     useEffect(() => {
         function onScroll() {
@@ -47,10 +49,14 @@ export const NavBar = () => {
                             />
                         </Link>
                     </div>
-                    <Button href="#" buttonType={ButtonType.NAV}>
+                    <a>Hello</a>
+                    <Button
+                        href="/counter"
+                        buttonType={
+                            pathname.startsWith("/counter") ? ButtonType.ACTIVE_NAV : ButtonType.NAV
+                        }>
                         Test
                     </Button>
-                    <a>Hello</a>
                     <IconButton onClick={toggleDarkMode}>
                         <Moon className="hidden dark:flex" strokeWidth={3} />
                         <Sun className="dark:hidden flex" strokeWidth={3} />
