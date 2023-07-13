@@ -72,12 +72,12 @@ export const NavBar = ({user = undefined}: {user?: User}) => {
                             <Sun className="dark:hidden flex" strokeWidth={3} />
                         </IconButton>
                         {user === undefined ? (
-                            <Spinner size={48} strokeWidth={3} className="p-2" />
-                        ) : (
                             <Button className="gap-2" href="#" buttonType={ButtonType.PRIMARY_NAV}>
                                 <Discord />
                                 Sign In with Discord
                             </Button>
+                        ) : (
+                            <Spinner size={48} strokeWidth={3} className="p-2" />
                         )}
                     </div>
                 </div>
