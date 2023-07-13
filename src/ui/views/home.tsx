@@ -15,10 +15,16 @@ const HomeView: NextPage = () => {
                 <h1 className="mt-8 mb-4 text-5xl font-bold">Z3R0</h1>
                 <p className="text-4xl text-center font-medium">An open-source discord bot</p>
                 <div className="mt-8 gap-3 flex flex-col sm:flex-row">
-                    <Button buttonType={ButtonType.PRIMARY} href="#">
+                    <Button
+                        buttonType={ButtonType.PRIMARY}
+                        href="#"
+                        aria-label="Invite bot to a Discord server">
                         Add to Server
                     </Button>
-                    <Button buttonType={ButtonType.OUTLINE} href="/counter">
+                    <Button
+                        buttonType={ButtonType.OUTLINE}
+                        href="/counter"
+                        aria-label="See all Z3R0's features">
                         See Features
                     </Button>
                 </div>
