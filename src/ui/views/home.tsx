@@ -31,7 +31,7 @@ const HomeView: NextPage = () => {
             <div className="flex bg-gray-200/[0.8] dark:bg-gray-50/[0.02]">
                 <div className="mx-5 mt-12 lg:mt-24 mb-20 lg:mb-32 w-full flex flex-col items-center justify-center">
                     <h1 className="mb-8 text-5xl font-semibold">Custom Commands</h1>
-                    <p className="max-w-2xl text-lg lg:text-xl text-center font-medium leading-normal">
+                    <p className="max-w-3xl text-lg lg:text-xl text-center font-medium leading-normal">
                         Z3R0 lets you build powerful and unique custom commands. Its scripting
                         engine "TagScript" gives you lots of control of your command's functionality
                         while still being relatively easy to use.
