@@ -17,6 +17,7 @@ module.exports = {
                 sans: ["Inter", "sans-serif"],
             },
             colors: {
+                discord: "#5865F2",
                 dark: "#0E1418",
                 "dark-alt": "#272C30",
             },
