@@ -1,10 +1,12 @@
 "use client"
 
 import useDarkMode from "@/lib/hooks/mode"
+import ButtonType from "@/model/enum/button-type"
 import { Moon, Sun } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useState } from "react"
+import Button from "./buttons/button"
 import IconButton from "./buttons/icon-button"
 import { Spinner } from "./spinner"
 import mascot from "/public/mascot.svg"
@@ -45,6 +47,9 @@ export const NavBar = () => {
                             />
                         </Link>
                     </div>
+                    <Button href="#" buttonType={ButtonType.NAV}>
+                        Test
+                    </Button>
                     <a>Hello</a>
                     <IconButton onClick={toggleDarkMode}>
                         <Moon className="hidden dark:flex" strokeWidth={3} />

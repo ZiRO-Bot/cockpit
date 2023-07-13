@@ -1,4 +1,5 @@
 enum ButtonType {
+    NAV,
     PRIMARY,
     OUTLINE,
 }
