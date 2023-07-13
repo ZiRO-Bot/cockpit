@@ -2,7 +2,7 @@
 
 import ButtonType from "@/model/enum/button-type"
 import LandingLayout from "@/ui/layouts/landing"
-import Button from "@/widget/button"
+import Button from "@/widget/buttons/button"
 import type { NextPage } from "next"
 import useCounterViewModel from "./counter-view-model"
 

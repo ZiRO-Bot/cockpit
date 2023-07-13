@@ -5,6 +5,7 @@ import { Moon, Sun } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useState } from "react"
+import IconButton from "./buttons/icon-button"
 import { Spinner } from "./spinner"
 import mascot from "/public/mascot.svg"
 
@@ -45,12 +46,10 @@ export const NavBar = () => {
                         </Link>
                     </div>
                     <a>Hello</a>
-                    <button
-                        className="w-12 h-12 flex rounded-full items-center justify-center active:scale-95 transition-transform hover:bg-gray-200 dark:hover:bg-gray-50/[0.1]"
-                        onClick={toggleDarkMode}>
+                    <IconButton onClick={toggleDarkMode}>
                         <Moon className="hidden dark:flex" strokeWidth={3} />
                         <Sun className="dark:hidden flex" strokeWidth={3} />
-                    </button>
+                    </IconButton>
                     <Spinner size={48} strokeWidth={3} className="p-2" />
                 </div>
             </nav>
