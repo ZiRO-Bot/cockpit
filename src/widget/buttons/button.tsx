@@ -26,12 +26,11 @@ const Button = ({
     } transition-[background-color] rounded-full active:scale-95 transition-transform `
     switch (buttonType) {
         case ButtonType.ACTIVE_NAV:
-            builder +=
-                "flex items-center justify-center active:scale-95 transition-transform bg-sky-500/[0.1] text-sky-600"
+            builder += "flex items-center justify-center bg-sky-500/[0.1] text-sky-600"
             break
         case ButtonType.NAV:
             builder +=
-                "flex items-center justify-center active:scale-95 transition-transform hover:bg-gray-200 dark:hover:bg-gray-50/[0.1]"
+                "flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-50/[0.1]"
             break
         case ButtonType.PRIMARY:
             builder += "bg-sky-500 hover:bg-opacity-80 text-white"
