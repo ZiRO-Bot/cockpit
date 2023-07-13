@@ -4,7 +4,6 @@ import useDarkMode from "@/lib/hooks/mode"
 import ButtonType from "@/model/enum/button-type"
 import User from "@/model/user"
 import { Moon, Sun } from "lucide-react"
-import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
@@ -12,9 +11,9 @@ import Button from "./buttons/button"
 import IconButton from "./buttons/icon-button"
 import Discord from "./icon/discord"
 import { Spinner } from "./spinner"
-import mascot from "/public/mascot.svg"
+import Mascot from "/public/mascot.svg"
 
-export const NavBar = ({user = undefined}: {user?: User}) => {
+export const NavBar = ({ user = undefined }: { user?: User }) => {
     const [isStuck, setIsStuck] = useState(false)
     const [_, toggleDarkMode] = useDarkMode()
     const pathname = usePathname()
@@ -44,10 +43,9 @@ export const NavBar = ({user = undefined}: {user?: User}) => {
                 <div className="h-16 w-full flex items-center font-bold">
                     <div className="h-12 flex justify-center">
                         <Link className="flex items-center justify-center gap-1" href="/">
-                            <Image
-                                alt="Bot's logo"
-                                src={mascot}
-                                className="h-8 w-8 pb-1.5 dark:invert"
+                            <Mascot
+                                alt="The bot (Z3R0)"
+                                className="h-8 w-8 pb-1.5 fill-dark dark:fill-white"
                             />
                             <span className="font-black">Z3R0</span>
                         </Link>
