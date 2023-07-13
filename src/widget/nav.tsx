@@ -47,7 +47,7 @@ export const NavBar = ({ user = undefined }: { user?: User }) => {
                                 alt="The bot (Z3R0)"
                                 className="h-8 w-8 pb-1.5 fill-dark dark:fill-white"
                             />
-                            <span className="font-black">Z3R0</span>
+                            <span className="font-black select-none">Z3R0</span>
                         </Link>
                     </div>
                     <div className="mx-8 gap-1.5 flex grow">
