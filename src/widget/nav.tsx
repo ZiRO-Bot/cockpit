@@ -14,7 +14,7 @@ import Discord from "./icon/discord"
 import { Spinner } from "./spinner"
 import mascot from "/public/mascot.svg"
 
-export const NavBar = (user?: User) => {
+export const NavBar = (user: User | undefined = undefined) => {
     const [isStuck, setIsStuck] = useState(false)
     const [_, toggleDarkMode] = useDarkMode()
     const pathname = usePathname()
