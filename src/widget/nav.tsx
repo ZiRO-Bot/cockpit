@@ -50,13 +50,17 @@ export const NavBar = () => {
                         </Link>
                     </div>
                     <a>Hello</a>
-                    <Button
-                        href="/counter"
-                        buttonType={
-                            pathname.startsWith("/counter") ? ButtonType.ACTIVE_NAV : ButtonType.NAV
-                        }>
-                        Test
-                    </Button>
+                    <div className="mx-2 gap-2 flex">
+                        <Button
+                            href="/counter"
+                            buttonType={
+                                pathname.startsWith("/counter")
+                                    ? ButtonType.ACTIVE_NAV
+                                    : ButtonType.NAV
+                            }>
+                            Test
+                        </Button>
+                    </div>
                     <IconButton onClick={toggleDarkMode}>
                         <Moon className="hidden dark:flex" strokeWidth={3} />
                         <Sun className="dark:hidden flex" strokeWidth={3} />

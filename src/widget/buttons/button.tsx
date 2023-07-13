@@ -22,8 +22,8 @@ const Button = ({
 }: ButtonProps) => {
     const isNav = buttonType === ButtonType.NAV || buttonType === ButtonType.ACTIVE_NAV
     let builder = `text-md font-bold ${
-        isNav ? "h-12 px-4" : "py-4 px-6 sm:px-8"
-    } transition-[background-color] rounded-full active:scale-95 transition-transform `
+        isNav ? "h-12 px-4" : "py-4 px-6 sm:px-8 active:scale-95 transition-transform"
+    } transition-[background-color] rounded-full `
     switch (buttonType) {
         case ButtonType.ACTIVE_NAV:
             builder += "flex items-center justify-center bg-sky-500/[0.1] text-sky-600"
