@@ -1,6 +1,6 @@
 "use client"
 
-import { SUCCESS_AUTH } from "@/lib/constants"
+import { FAILED_AUTH, SUCCESS_AUTH } from "@/lib/constants"
 import useDarkMode from "@/lib/hooks/mode"
 import ButtonType from "@/model/enum/button-type"
 import User from "@/model/user"
@@ -25,6 +25,8 @@ export const NavBar = ({ user = undefined }: { user?: User }) => {
     const loginHandler = (event: MessageEvent) => {
         if (event.data.message === SUCCESS_AUTH) {
             window.location.reload()
+        }
+        if (event.data.message === SUCCESS_AUTH || event.data.message === FAILED_AUTH) {
             setIsSigning(false)
             window.removeEventListener("message", loginHandler)
         }
