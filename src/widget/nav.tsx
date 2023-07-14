@@ -25,6 +25,7 @@ export const NavBar = ({ user = undefined }: { user?: User }) => {
     const loginHandler = (event: MessageEvent) => {
         if (event.data.message === SUCCESS_AUTH) {
             window.location.reload()
+            setIsSigning(false)
             window.removeEventListener("message", loginHandler)
         }
     }
@@ -84,7 +85,10 @@ export const NavBar = ({ user = undefined }: { user?: User }) => {
                             <Button
                                 className="gap-2"
                                 onClick={() => {
-                                    if (!isSigning) window.addEventListener("message", loginHandler)
+                                    if (!isSigning) {
+                                        window.addEventListener("message", loginHandler)
+                                        setIsSigning(true)
+                                    }
                                     window.open(loginUrl, "_blank")
                                 }}
                                 buttonType={ButtonType.PRIMARY_NAV}>
