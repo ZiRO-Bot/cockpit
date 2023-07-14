@@ -1,5 +1,6 @@
 "use client"
 
+import { SUCCESS_AUTH } from "@/lib/constants"
 import useDarkMode from "@/lib/hooks/mode"
 import ButtonType from "@/model/enum/button-type"
 import User from "@/model/user"
@@ -17,6 +18,16 @@ export const NavBar = ({ user = undefined }: { user?: User }) => {
     const [isStuck, setIsStuck] = useState(false)
     const [_, toggleDarkMode] = useDarkMode()
     const pathname = usePathname()
+
+    // -- oauth stuff
+    const [isSigning, setIsSigning] = useState(false)
+    const loginUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/login`
+    const loginHandler = (event: MessageEvent) => {
+        if (event.data.message === SUCCESS_AUTH) {
+            window.location.reload()
+            window.removeEventListener("message", loginHandler)
+        }
+    }
 
     useEffect(() => {
         function onScroll() {
@@ -70,7 +81,13 @@ export const NavBar = ({ user = undefined }: { user?: User }) => {
                             <Sun className="dark:hidden flex" strokeWidth={3} />
                         </IconButton>
                         {user === undefined ? (
-                            <Button className="gap-2" href="#" buttonType={ButtonType.PRIMARY_NAV}>
+                            <Button
+                                className="gap-2"
+                                onClick={() => {
+                                    if (!isSigning) window.addEventListener("message", loginHandler)
+                                    window.open(loginUrl, "_blank")
+                                }}
+                                buttonType={ButtonType.PRIMARY_NAV}>
                                 <Discord />
                                 Sign In with Discord
                             </Button>
