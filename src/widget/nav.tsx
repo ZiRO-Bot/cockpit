@@ -1,9 +1,11 @@
 "use client"
 
+import { selectAuth } from "@/data/redux/auth"
 import { FAILED_AUTH, SUCCESS_AUTH } from "@/lib/constants"
 import useDarkMode from "@/lib/hooks/mode"
+import { useSelector } from "@/lib/hooks/typed-redux"
 import ButtonType from "@/model/enum/button-type"
-import User from "@/model/user"
+import { LoadingStateType } from "@/model/loading"
 import { Moon, Sun } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -14,12 +16,14 @@ import Discord from "./icon/discord"
 import { Spinner } from "./spinner"
 import Mascot from "/public/mascot.svg"
 
-export const NavBar = ({ user = undefined }: { user?: User }) => {
+export const NavBar = () => {
     const [isStuck, setIsStuck] = useState(false)
     const [_, toggleDarkMode] = useDarkMode()
     const pathname = usePathname()
 
     // -- oauth stuff
+    const isLoggedIn = useSelector(selectAuth)
+    const user = useSelector((state) => state.auth.user)
     const [isSigning, setIsSigning] = useState(false)
     const loginUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/login`
     const loginHandler = (event: MessageEvent) => {
@@ -83,22 +87,34 @@ export const NavBar = ({ user = undefined }: { user?: User }) => {
                             <Moon className="hidden dark:flex" strokeWidth={3} />
                             <Sun className="dark:hidden flex" strokeWidth={3} />
                         </IconButton>
-                        {user === undefined ? (
-                            <Button
-                                className="gap-2"
-                                onClick={() => {
-                                    if (!isSigning) {
-                                        window.addEventListener("message", loginHandler)
-                                        setIsSigning(true)
-                                    }
-                                    window.open(loginUrl, "_blank")
-                                }}
-                                buttonType={ButtonType.PRIMARY_NAV}>
-                                <Discord />
-                                Sign In with Discord
-                            </Button>
-                        ) : (
+                        {!isLoggedIn ? (
+                            isLoggedIn !== undefined ? (
+                                <Button
+                                    className="gap-2"
+                                    onClick={() => {
+                                        if (!isSigning) {
+                                            window.addEventListener("message", loginHandler)
+                                            setIsSigning(true)
+                                        }
+                                        window.open(loginUrl, "_blank")
+                                    }}
+                                    buttonType={ButtonType.PRIMARY_NAV}>
+                                    <Discord />
+                                    Sign In with Discord
+                                </Button>
+                            ) : (
+                                <Spinner size={48} strokeWidth={3} className="p-2" />
+                            )
+                        ) : user.status === LoadingStateType.INITIAL ||
+                          user.status === LoadingStateType.LOADING ? (
                             <Spinner size={48} strokeWidth={3} className="p-2" />
+                        ) : (
+                            <img
+                                alt="User's avatar"
+                                width={48}
+                                height={48}
+                                src={user.data?.avatar || ""}
+                            />
                         )}
                     </div>
                 </div>
