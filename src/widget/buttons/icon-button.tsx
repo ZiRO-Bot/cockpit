@@ -1,5 +1,6 @@
 "use client"
 
+import { COMMON_TW } from "@/lib/constants"
 import { MouseEventHandler, ReactNode } from "react"
 
 const IconButton = ({
@@ -11,7 +12,7 @@ const IconButton = ({
     onClick: MouseEventHandler
     className?: string
 }) => {
-    className = `w-12 h-12 flex rounded-full items-center justify-center active:scale-95 transition-transform hover:bg-gray-200 dark:hover:bg-gray-50/[0.1] ${className}`
+    className = `w-12 h-12 flex items-center justify-center ${COMMON_TW.ICON_BUTTON} ${className}`
     return (
         <button className={className} onClick={onClick}>
             {children}
