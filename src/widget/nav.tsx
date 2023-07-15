@@ -5,15 +5,13 @@ import { FAILED_AUTH, SUCCESS_AUTH } from "@/lib/constants"
 import useDarkMode from "@/lib/hooks/mode"
 import { useSelector } from "@/lib/hooks/typed-redux"
 import ButtonType from "@/model/enum/button-type"
-import { LoadingStateType } from "@/model/loading"
 import { Moon, Sun } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
 import Button from "./buttons/button"
 import IconButton from "./buttons/icon-button"
-import Discord from "./icon/discord"
-import { Spinner } from "./spinner"
+import { UserAvatarOrLogin } from "./user-avatar-login"
 import Mascot from "/public/mascot.svg"
 
 export const NavBar = () => {
@@ -23,7 +21,7 @@ export const NavBar = () => {
 
     // -- oauth stuff
     const isLoggedIn = useSelector(selectAuth)
-    const user = useSelector((state) => state.auth.user)
+    const auth = useSelector((state) => state.auth)
     const [isSigning, setIsSigning] = useState(false)
     const loginUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/login`
     const loginHandler = (event: MessageEvent) => {
@@ -34,34 +32,6 @@ export const NavBar = () => {
             setIsSigning(false)
             window.removeEventListener("message", loginHandler)
         }
-    }
-
-    // -- nav components
-    const spinner = <Spinner size={48} strokeWidth={3} className="p-2" />
-    const useUserAvatar = () => {
-        if (
-            isLoggedIn === undefined ||
-            user.status === LoadingStateType.INITIAL ||
-            user.status === LoadingStateType.LOADING
-        )
-            return spinner
-        if (!isLoggedIn)
-            return (
-                <Button
-                    className="gap-2"
-                    onClick={() => {
-                        if (!isSigning) {
-                            window.addEventListener("message", loginHandler)
-                            setIsSigning(true)
-                        }
-                        window.open(loginUrl, "_blank")
-                    }}
-                    buttonType={ButtonType.PRIMARY_NAV}>
-                    <Discord />
-                    Sign In with Discord
-                </Button>
-            )
-        return <img alt="User's avatar" width={48} height={48} src={user.data?.avatar || ""} />
     }
 
     useEffect(() => {
@@ -115,7 +85,15 @@ export const NavBar = () => {
                             <Moon className="hidden dark:flex" strokeWidth={3} />
                             <Sun className="dark:hidden flex" strokeWidth={3} />
                         </IconButton>
-                        {useUserAvatar()}
+                        <UserAvatarOrLogin
+                            onClick={() => {
+                                if (!isSigning) {
+                                    window.addEventListener("message", loginHandler)
+                                    setIsSigning(true)
+                                }
+                                window.open(loginUrl, "_blank")
+                            }}
+                        />
                     </div>
                 </div>
             </nav>
