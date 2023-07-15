@@ -31,10 +31,16 @@ export const UserAvatarOrLogin = ({ onClick }: { onClick: MouseEventHandler }) =
         <details className="group/dropdown">
             <summary
                 className={
-                    `w-12 h-12 flex justify-center items-center group-open/dropdown:hover:bg-transparent group-open/dropdown:active:scale-100 ${COMMON_TW.ICON_BUTTON}` +
+                    `w-12 h-12 flex justify-center items-center group-open/dropdown:bg-gray-200 dark:group-open/dropdown:bg-gray-50/[0.1] group-open/dropdown:active:scale-100 ${COMMON_TW.ICON_BUTTON}` +
                     "before:top-0 before:bottom-0 before:left-auto before:right-0 before:fixed before:cursor-default before:hidden group-open/dropdown:before:block before:content-[' '] before:bg-transparent before:w-screen before:h-screen before:z-[80]"
                 }>
-                <img alt="User's avatar" width={24} height={24} src={user.data?.avatar || ""} />
+                <img
+                    className="rounded-full"
+                    alt="User's avatar"
+                    width={24}
+                    height={24}
+                    src={user.data?.avatar || ""}
+                />
             </summary>
             <div className="absolute m-4 right-0 left-auto bg-white">
                 <h1>Hello World</h1>
