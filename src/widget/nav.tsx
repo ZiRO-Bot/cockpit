@@ -36,6 +36,34 @@ export const NavBar = () => {
         }
     }
 
+    // -- nav components
+    const spinner = <Spinner size={48} strokeWidth={3} className="p-2" />
+    const useUserAvatar = () => {
+        if (
+            isLoggedIn === undefined ||
+            user.status === LoadingStateType.INITIAL ||
+            user.status === LoadingStateType.LOADING
+        )
+            return spinner
+        if (!isLoggedIn)
+            return (
+                <Button
+                    className="gap-2"
+                    onClick={() => {
+                        if (!isSigning) {
+                            window.addEventListener("message", loginHandler)
+                            setIsSigning(true)
+                        }
+                        window.open(loginUrl, "_blank")
+                    }}
+                    buttonType={ButtonType.PRIMARY_NAV}>
+                    <Discord />
+                    Sign In with Discord
+                </Button>
+            )
+        return <img alt="User's avatar" width={48} height={48} src={user.data?.avatar || ""} />
+    }
+
     useEffect(() => {
         function onScroll() {
             if (!isStuck && window.scrollY > 0) {
@@ -87,35 +115,7 @@ export const NavBar = () => {
                             <Moon className="hidden dark:flex" strokeWidth={3} />
                             <Sun className="dark:hidden flex" strokeWidth={3} />
                         </IconButton>
-                        {!isLoggedIn ? (
-                            isLoggedIn !== undefined ? (
-                                <Button
-                                    className="gap-2"
-                                    onClick={() => {
-                                        if (!isSigning) {
-                                            window.addEventListener("message", loginHandler)
-                                            setIsSigning(true)
-                                        }
-                                        window.open(loginUrl, "_blank")
-                                    }}
-                                    buttonType={ButtonType.PRIMARY_NAV}>
-                                    <Discord />
-                                    Sign In with Discord
-                                </Button>
-                            ) : (
-                                <Spinner size={48} strokeWidth={3} className="p-2" />
-                            )
-                        ) : user.status === LoadingStateType.INITIAL ||
-                          user.status === LoadingStateType.LOADING ? (
-                            <Spinner size={48} strokeWidth={3} className="p-2" />
-                        ) : (
-                            <img
-                                alt="User's avatar"
-                                width={48}
-                                height={48}
-                                src={user.data?.avatar || ""}
-                            />
-                        )}
+                        {useUserAvatar()}
                     </div>
                 </div>
             </nav>
