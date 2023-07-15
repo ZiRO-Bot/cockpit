@@ -42,7 +42,7 @@ export const UserAvatarOrLogin = ({ onClick }: { onClick: MouseEventHandler }) =
                     src={user.data?.avatar || ""}
                 />
             </summary>
-            <div className="absolute m-4 right-0 left-auto backdrop-blur py-2 px-1.5 lg:px-4 rounded-xl bg-white/60 dark:bg-dark/60 shadow-border-like-btn dark:shadow-border-like-dark-btn">
+            <div className="absolute m-4 right-0 left-auto backdrop-blur py-2 px-1.5 lg:px-4 rounded-xl bg-white/60 dark:bg-dark/60 shadow-border-like-btn dark:shadow-border-like-dark-btn z-[100]">
                 <a>{user.data?.username}</a>
             </div>
         </details>
