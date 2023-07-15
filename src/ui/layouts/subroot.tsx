@@ -13,9 +13,13 @@ export default function SubRootLayout({ children }: { children: React.ReactNode 
         if (isLoggedIn === undefined) {
             fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/v2/ping`, {
                 credentials: "include",
-            }).then(() => {
-                dispatch(fetchFromCookie())
             })
+                .then(() => {
+                    dispatch(fetchFromCookie())
+                })
+                .catch(() => {
+                    dispatch(fetchFromCookie())
+                })
         }
     }, [])
 
