@@ -1,9 +1,7 @@
 "use client"
 
-import { selectIsLoggedIn } from "@/data/redux/auth"
 import { FAILED_AUTH, SUCCESS_AUTH } from "@/lib/constants"
 import useDarkMode from "@/lib/hooks/mode"
-import { useSelector } from "@/lib/hooks/typed-redux"
 import ButtonType from "@/model/enum/button-type"
 import { Moon, Sun } from "lucide-react"
 import Link from "next/link"
@@ -51,7 +49,7 @@ export const NavBar = () => {
         <div className="z-50 sticky top-0">
             <nav
                 className={
-                    "backdrop-blur px-1.5 lg:px-4 bg-white/60 dark:bg-dark/60 transition-shadow duration-300" +
+                    "backdrop-blur px-2 lg:px-8 bg-white/60 dark:bg-dark/60 transition-shadow duration-300" +
                     (isStuck ? " shadow-border-like dark:shadow-border-like-dark" : "")
                 }>
                 <div className="h-16 w-full flex items-center font-bold">
@@ -64,7 +62,7 @@ export const NavBar = () => {
                             <span className="font-black select-none">Z3R0</span>
                         </Link>
                     </div>
-                    <div className="mx-8 gap-1.5 flex grow">
+                    <div className="mx-6 gap-1.5 flex grow">
                         <Button
                             href="/counter"
                             buttonType={
@@ -78,7 +76,7 @@ export const NavBar = () => {
                             Hello
                         </Button>
                     </div>
-                    <div className="flex gap-1.5">
+                    <div className="flex">
                         <IconButton onClick={toggleDarkMode}>
                             <Moon className="hidden dark:flex" strokeWidth={3} />
                             <Sun className="dark:hidden flex" strokeWidth={3} />
