@@ -48,6 +48,7 @@ export const authSlice = createSlice({
 export const { fetchFromCookie } = authSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
-export const selectAuth = (state: RootState) => state.auth.isLoggedIn
+export const selectIsLoggedIn = (state: RootState) => state.auth.isLoggedIn
+export const selectUser = (state: RootState) => state.auth.user
 
 export default authSlice.reducer

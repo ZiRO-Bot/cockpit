@@ -1,6 +1,6 @@
 "use client"
 
-import { selectAuth } from "@/data/redux/auth"
+import { selectIsLoggedIn } from "@/data/redux/auth"
 import { FAILED_AUTH, SUCCESS_AUTH } from "@/lib/constants"
 import useDarkMode from "@/lib/hooks/mode"
 import { useSelector } from "@/lib/hooks/typed-redux"
@@ -20,7 +20,7 @@ export const NavBar = () => {
     const pathname = usePathname()
 
     // -- oauth stuff
-    const isLoggedIn = useSelector(selectAuth)
+    const isLoggedIn = useSelector(selectIsLoggedIn)
     const auth = useSelector((state) => state.auth)
     const [isSigning, setIsSigning] = useState(false)
     const loginUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/login`
@@ -76,7 +76,7 @@ export const NavBar = () => {
                             }>
                             Test
                         </Button>
-                        <Button href="#" buttonType={ButtonType.NAV}>
+                        <Button href="/dashboard" buttonType={ButtonType.NAV}>
                             Hello
                         </Button>
                     </div>

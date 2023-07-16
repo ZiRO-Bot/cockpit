@@ -1,12 +1,11 @@
 "use client"
 
-import { fetchFromCookie, fetchUser, selectAuth } from "@/data/redux/auth"
+import { fetchFromCookie, fetchUser, selectIsLoggedIn } from "@/data/redux/auth"
 import { useDispatch, useSelector } from "@/lib/hooks/typed-redux"
 import { useEffect } from "react"
 
 export default function SubRootLayout({ children }: { children: React.ReactNode }) {
-    const isLoggedIn = useSelector(selectAuth)
-    const user = useSelector((state) => state.auth.user)
+    const isLoggedIn = useSelector(selectIsLoggedIn)
     const dispatch = useDispatch()
 
     useEffect(() => {

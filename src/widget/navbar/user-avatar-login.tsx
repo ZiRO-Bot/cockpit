@@ -1,4 +1,4 @@
-import { selectAuth } from "@/data/redux/auth"
+import { selectIsLoggedIn } from "@/data/redux/auth"
 import { COMMON_TW } from "@/lib/constants"
 import { useSelector } from "@/lib/hooks/typed-redux"
 import ButtonType from "@/model/enum/button-type"
@@ -9,7 +9,7 @@ import Discord from "../icon/discord"
 import { Spinner } from "../spinner"
 
 export const UserAvatarOrLogin = ({ onClick }: { onClick: MouseEventHandler }) => {
-    const isLoggedIn = useSelector(selectAuth)
+    const isLoggedIn = useSelector(selectIsLoggedIn)
     const user = useSelector((state) => state.auth.user)
 
     const spinner = <Spinner size={48} strokeWidth={3} className="p-2" />
