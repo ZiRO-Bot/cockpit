@@ -1,5 +1,6 @@
 "use client"
 
+import { COMMON_TW } from "@/lib/constants"
 import ButtonType from "@/model/enum/button-type"
 import Link from "next/link"
 import { AriaAttributes, MouseEventHandler, ReactNode } from "react"
@@ -43,9 +44,11 @@ const Button = ({
         case ButtonType.PRIMARY_NAV || ButtonType.PRIMARY:
             builder += "font-bold bg-sky-500 hover:bg-opacity-80 text-white"
             break
+        case ButtonType.GRAY:
+            builder += "font-bold bg-gray-600 hover:bg-opacity-80  text-white"
+            break
         case ButtonType.OUTLINE:
-            builder +=
-                "font-bold bg-transparent hover:bg-gray-200/[0.75] dark:hover:bg-gray-50/[0.02] shadow-border-like-btn dark:shadow-border-like-dark-btn"
+            builder += `font-bold bg-transparent hover:bg-gray-200/[0.75] dark:hover:bg-gray-50/[0.02] ${COMMON_TW.BORDER_LIKE_SHADOW_BTN}`
             break
         case ButtonType.ACTIVE_DROPDOWN:
             builder += "bg-gray-400/[0.25] dark:bg-gray-500/[0.3]"

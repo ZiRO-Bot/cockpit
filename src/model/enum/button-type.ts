@@ -3,6 +3,7 @@ enum ButtonType {
     ACTIVE_NAV,
     NAV,
     PRIMARY,
+    GRAY,
     OUTLINE,
     DROPDOWN,
     ACTIVE_DROPDOWN,
