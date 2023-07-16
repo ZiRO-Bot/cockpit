@@ -40,6 +40,9 @@ module.exports = {
             pattern: /stroke-.+/,
             variants: ["dark"],
         },
+        {
+            pattern: /p(x|y)?-.+/,
+        },
         "cursor-pointer",
     ],
     plugins: [],

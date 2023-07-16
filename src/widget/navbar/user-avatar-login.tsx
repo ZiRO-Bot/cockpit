@@ -3,6 +3,7 @@ import { COMMON_TW } from "@/lib/constants"
 import { useSelector } from "@/lib/hooks/typed-redux"
 import ButtonType from "@/model/enum/button-type"
 import { LoadingStateType } from "@/model/loading"
+import { usePathname } from "next/navigation"
 import { MouseEventHandler } from "react"
 import Button from "../buttons/button"
 import Discord from "../icon/discord"
@@ -11,6 +12,7 @@ import { Spinner } from "../spinner"
 export const UserAvatarOrLogin = ({ onClick }: { onClick: MouseEventHandler }) => {
     const isLoggedIn = useSelector(selectIsLoggedIn)
     const user = useSelector((state) => state.auth.user)
+    const pathname = usePathname()
 
     const spinner = <Spinner size={48} strokeWidth={3} className="p-2" />
 
@@ -42,8 +44,19 @@ export const UserAvatarOrLogin = ({ onClick }: { onClick: MouseEventHandler }) =
                     src={user.data?.avatar || ""}
                 />
             </summary>
-            <div className="absolute m-4 right-0 left-auto backdrop-blur py-2 px-1.5 lg:px-4 rounded-xl bg-white/60 dark:bg-dark/60 shadow-border-like-btn dark:shadow-border-like-dark-btn z-[100]">
-                <a>{user.data?.username}</a>
+            <div className="absolute min-w-[12rem] m-4 right-0 left-auto backdrop-blur p-4 rounded-xl bg-white/60 dark:bg-dark/60 shadow-border-like-btn dark:shadow-border-like-dark-btn z-[100]">
+                <Button
+                    className="flex flex-col gap-1"
+                    buttonType={
+                        pathname.startsWith("/dashboard")
+                            ? ButtonType.ACTIVE_DROPDOWN
+                            : ButtonType.DROPDOWN
+                    }
+                    padding="p-2"
+                    href="/dashboard">
+                    <span>@{user.data?.global_name || user.data?.username}</span>
+                    <span>My servers</span>
+                </Button>
             </div>
         </details>
     )

@@ -1,9 +1,11 @@
 enum ButtonType {
+    PRIMARY_NAV,
     ACTIVE_NAV,
     NAV,
     PRIMARY,
-    PRIMARY_NAV,
     OUTLINE,
+    DROPDOWN,
+    ACTIVE_DROPDOWN,
 }
 
 export default ButtonType

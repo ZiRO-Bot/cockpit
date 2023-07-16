@@ -18,12 +18,13 @@ export default function ProtectedLayout({
     const isLoggedIn = useSelector(selectIsLoggedIn)
 
     useEffect(() => {
+        if (isLoggedIn === undefined) return
         if (!isLoggedIn) {
             router.back()
             return
         }
         setIsLoading(false)
-    })
+    }, [isLoggedIn])
 
     switch (sectionType) {
         case SectionType.LANDING:

@@ -20,8 +20,6 @@ export const NavBar = () => {
     const pathname = usePathname()
 
     // -- oauth stuff
-    const isLoggedIn = useSelector(selectIsLoggedIn)
-    const auth = useSelector((state) => state.auth)
     const [isSigning, setIsSigning] = useState(false)
     const loginUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/login`
     const loginHandler = (event: MessageEvent) => {
