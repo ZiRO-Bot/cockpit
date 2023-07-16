@@ -10,7 +10,10 @@ const HomeView: NextPage = () => {
     return (
         <LandingLayout>
             <div className="mx-5 mt-12 lg:mt-24 mb-20 lg:mb-32 flex flex-col items-center justify-center">
-                <Mascot alt="The bot (Z3R0)" className="w-32 h-32 fill-dark dark:fill-white" />
+                <Mascot
+                    alt="The bot (Z3R0)"
+                    className="w-32 h-32 mr-2.5 fill-dark dark:fill-white"
+                />
                 <h1 className="mt-8 mb-4 text-5xl font-bold">Z3R0</h1>
                 <p className="text-4xl text-center font-medium">An open-source discord bot</p>
                 <div className="mt-8 gap-3 w-full sm:w-auto text-center flex flex-col sm:flex-row">
