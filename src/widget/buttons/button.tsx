@@ -48,10 +48,10 @@ const Button = ({
                 "font-bold bg-transparent hover:bg-gray-200/[0.75] dark:hover:bg-gray-50/[0.02] shadow-border-like-btn dark:shadow-border-like-dark-btn"
             break
         case ButtonType.ACTIVE_DROPDOWN:
-            builder += "bg-gray-200 dark:bg-gray-50/[0.1]"
+            builder += "bg-gray-400/[0.25] dark:bg-gray-500/[0.3]"
         case ButtonType.DROPDOWN:
             builder +=
-                " font-semibold hover:bg-gray-300 dark:hover:bg-gray-50/[0.07] text-black dark:text-white"
+                " font-semibold hover:bg-gray-500/[0.2] dark:hover:bg-gray-600/[0.3] text-black dark:text-white"
             break
     }
     className = `${builder} ${className}`
