@@ -46,7 +46,7 @@ export const NavBar = () => {
     }, [isStuck])
 
     return (
-        <div className="z-50 sticky top-0">
+        <div className="peer/navbar z-50 sticky top-0 nav">
             <nav
                 className={
                     "backdrop-blur px-2 lg:px-8 bg-white/60 dark:bg-dark/60 transition-shadow duration-300" +

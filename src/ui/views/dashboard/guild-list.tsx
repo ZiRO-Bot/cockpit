@@ -1,14 +1,14 @@
 "use client"
 
-import { SectionType } from "@/model/enum/section"
-import ProtectedLayout from "@/ui/layouts/protected"
+import LandingLayout from "@/ui/layouts/landing"
+import protectedView from "@/ui/protected"
 
 const GuildListView = () => {
     return (
-        <ProtectedLayout sectionType={SectionType.LANDING}>
-            <h1>Hello World</h1>
-        </ProtectedLayout>
+        <div className="mx-5 flex flex-col items-center justify-center">
+            <h1>Select a server</h1>
+        </div>
     )
 }
 
-export default GuildListView
+export default protectedView(GuildListView, LandingLayout)
