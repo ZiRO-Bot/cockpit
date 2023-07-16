@@ -22,7 +22,7 @@ export default function ProtectedLayout({
             router.back()
             return
         }
-        setIsLoading(true)
+        setIsLoading(false)
     })
 
     switch (sectionType) {
