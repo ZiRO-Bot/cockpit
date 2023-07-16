@@ -10,7 +10,7 @@ const protectedView = (
         <>{children}</>
     ),
 ) => {
-    return (props: React.JSX.IntrinsicAttributes) => {
+    return (props: any) => {
         const router = useRouter()
         const [isLoading, setIsLoading] = useState(true)
         const isLoggedIn = useSelector(selectIsLoggedIn)
