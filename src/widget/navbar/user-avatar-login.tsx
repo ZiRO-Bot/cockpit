@@ -3,6 +3,7 @@ import { COMMON_TW } from "@/lib/constants"
 import { useSelector } from "@/lib/hooks/typed-redux"
 import ButtonType from "@/model/enum/button-type"
 import { LoadingStateType } from "@/model/loading"
+import { LogOut } from "lucide-react"
 import { usePathname } from "next/navigation"
 import { MouseEventHandler } from "react"
 import Button from "../buttons/button"
@@ -56,6 +57,15 @@ export const UserAvatarOrLogin = ({ onClick }: { onClick: MouseEventHandler }) =
                     href="/dashboard">
                     <span>@{user.data?.global_name || user.data?.username}</span>
                     <span>My servers</span>
+                </Button>
+                <hr className="my-2 border-gray-400/[0.5] dark:border-gray-500/[0.5]" />
+                <Button
+                    className="flex items-center gap-2"
+                    buttonType={ButtonType.DROPDOWN}
+                    padding="p-2"
+                    href="#">
+                    <LogOut size={20} strokeWidth={2.5} />
+                    Log out
                 </Button>
             </div>
         </details>
