@@ -53,7 +53,7 @@ export const NavBar = () => {
         <>
             {(meta.botOnline === false || meta.nexusOnline === false) && (
                 <div className="px-4 py-2 bg-red-600 flex justify-center">
-                    <a className="font-bold">
+                    <a className="font-bold text-white">
                         {!meta.botOnline && "The bot is currently offline! Please try again later"}
                         {!meta.nexusOnline &&
                             "The bot's server is currently offline! Please try again later"}
