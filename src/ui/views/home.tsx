@@ -5,7 +5,7 @@ import LandingLayout from "@/ui/layouts/landing"
 import Button from "@/widget/buttons/button"
 import Mascot from "/public/mascot.svg"
 
-const HomeView = ({ inviteLink }: { inviteLink: string }) => {
+const HomeView = ({ inviteLink }: { inviteLink?: string }) => {
     return (
         <LandingLayout>
             <div className="mx-5 mt-12 lg:mt-24 mb-20 lg:mb-32 flex flex-col items-center justify-center">
@@ -17,6 +17,7 @@ const HomeView = ({ inviteLink }: { inviteLink: string }) => {
                 <p className="text-4xl text-center font-medium">An open-source discord bot</p>
                 <div className="mt-8 gap-3 w-full sm:w-auto text-center flex flex-col sm:flex-row">
                     <Button
+                        className={!inviteLink ? "disabled" : ""}
                         buttonType={ButtonType.PRIMARY}
                         href={inviteLink}
                         aria-label="Invite bot to a Discord server">

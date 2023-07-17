@@ -1,18 +1,23 @@
 import HomeView from "@/ui/views/home"
 import { NextPage } from "next"
 
-const getInviteLink = async (): Promise<{ invite: string }> => {
+const getInviteLink = async (): Promise<string> => {
     const resp = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/invite`, {
         headers: {
             "Content-Type": "application/json",
         },
     })
-    return await resp.json()
+    const data = await resp.json()
+    return data.invite
 }
 
 const HomePage: NextPage = async () => {
-    const inviteLink = await getInviteLink()
-    return <HomeView inviteLink={inviteLink.invite} />
+    let inviteLink
+    try {
+        inviteLink = await getInviteLink()
+    } catch (ignored) {}
+
+    return <HomeView inviteLink={inviteLink} />
 }
 
 export default HomePage
