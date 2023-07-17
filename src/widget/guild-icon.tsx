@@ -5,7 +5,7 @@ const GuildIcon = ({ size, guild }: { size: number; guild: Guild }) => {
     const className = "flex justify-center items-center rounded-3xl text-white"
 
     return guild.icon ? (
-        <img className={className} src={guild.icon} height={size} width={size} />
+        <img className={`${className} bg-dark`} src={guild.icon} height={size} width={size} />
     ) : (
         <div
             className={`${className} text-[${size / 4}px] font-bold bg-discord`}

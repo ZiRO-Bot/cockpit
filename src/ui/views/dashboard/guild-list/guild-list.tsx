@@ -21,8 +21,8 @@ const GuildListView = () => {
             <div className="w-64 sm:w-full md:w-5/6 lg:w-2/3 mt-6 mx-8 md:mx-0 gap-6 flex flex-col items-center justify-center">
                 <a className="text-2xl font-bold">Select a server</a>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 ${COMMON_TW.BORDER_LIKE_SHADOW_BTN}">
-                    {viewModel.guilds
-                        .sort()
+                    {[...viewModel.guilds]
+                        .sort((a, b) => b.name.localeCompare(a.name))
                         .sort((a, b) => (a.bot ? 0 : 1))
                         .map((guild) => {
                             return (
