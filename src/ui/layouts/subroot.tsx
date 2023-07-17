@@ -1,6 +1,8 @@
 "use client"
 
+import { pingNexus } from "@/data/api/meta"
 import { fetchFromCookie, fetchUser, selectIsLoggedIn } from "@/data/redux/auth"
+import { setBotOnlineStatus, setNexusOnlineStatus } from "@/data/redux/meta"
 import { useDispatch, useSelector } from "@/lib/hooks/typed-redux"
 import { useEffect } from "react"
 
@@ -10,15 +12,18 @@ export default function SubRootLayout({ children }: { children: React.ReactNode 
 
     useEffect(() => {
         if (isLoggedIn === undefined) {
-            fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/v2/ping`, {
-                credentials: "include",
-            })
-                .then(() => {
+            pingNexus().then(
+                (ping) => {
                     dispatch(fetchFromCookie())
-                })
-                .catch(() => {
+                    dispatch(setBotOnlineStatus(ping.botPing !== null))
+                    dispatch(setNexusOnlineStatus(true))
+                },
+                () => {
                     dispatch(fetchFromCookie())
-                })
+                    dispatch(setBotOnlineStatus(false))
+                    dispatch(setNexusOnlineStatus(false))
+                },
+            )
         }
     }, [])
 
