@@ -19,11 +19,14 @@ const MetaView = ({ params }: { params: GuildDashboardParams }) => {
             alert("Prefix can't be empty string!")
             return false
         }
+
         const rt = await manageGuildPrefix(
             params.id,
             prefix,
             type == 0 ? FetchMethodType.PUT : FetchMethodType.DELETE,
         )
+        if (rt.prefixes === undefined) return false
+
         setPrefixes(rt.prefixes)
         return true
     }
