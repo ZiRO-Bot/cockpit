@@ -33,29 +33,30 @@ const Button = ({
         buttonType === ButtonType.DROPDOWN || buttonType === ButtonType.ACTIVE_DROPDOWN
             ? "rounded-lg"
             : "rounded-full"
-    } `
+    } [&.disabled]:pointer-events-none [&.disabled]:cursor-default [&.disabled]:brightness-125 dark:[&.disabled]:brightness-90 `
     switch (buttonType) {
         case ButtonType.ACTIVE_NAV:
             builder += "font-bold bg-sky-500/[0.1] text-sky-600"
             break
         case ButtonType.NAV:
-            builder += "font-bold hover:bg-gray-200 dark:hover:bg-gray-50/[0.1]"
+            builder +=
+                "font-bold [&:not(.disabled)]:hover:bg-gray-200 dark:[&:not(.disabled)]:hover:bg-gray-50/[0.1]"
             break
         case ButtonType.PRIMARY_NAV:
         case ButtonType.PRIMARY:
-            builder += "font-bold bg-sky-500 hover:bg-opacity-80 text-white"
+            builder += "font-bold bg-sky-500 [&:not(.disabled)]:hover:bg-opacity-80 text-white"
             break
         case ButtonType.GRAY:
-            builder += "font-bold bg-gray-600 hover:bg-opacity-80  text-white"
+            builder += "font-bold bg-gray-600 [&:not(.disabled)]:hover:bg-opacity-80  text-white"
             break
         case ButtonType.OUTLINE:
-            builder += `font-bold bg-transparent hover:bg-gray-200/[0.75] dark:hover:bg-gray-50/[0.02] ${COMMON_TW.BORDER_LIKE_SHADOW_BTN}`
+            builder += `font-bold bg-transparent [&:not(.disabled)]:hover:bg-gray-200/[0.75] dark:[&:not(.disabled)]:hover:bg-gray-50/[0.02] ${COMMON_TW.BORDER_LIKE_SHADOW_BTN}`
             break
         case ButtonType.ACTIVE_DROPDOWN:
             builder += "bg-gray-400/[0.25] dark:bg-gray-500/[0.3]"
         case ButtonType.DROPDOWN:
             builder +=
-                " font-semibold hover:bg-gray-500/[0.2] dark:hover:bg-gray-600/[0.3] text-black dark:text-white"
+                " font-semibold [&:not(.disabled)]:hover:bg-gray-500/[0.2] dark:[&:not(.disabled)]:hover:bg-gray-600/[0.3] text-black dark:text-white"
             break
     }
     className = `${builder} ${className}`

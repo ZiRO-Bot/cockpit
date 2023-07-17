@@ -13,6 +13,8 @@ import { Spinner } from "../spinner"
 export const UserAvatarOrLogin = ({ onClick }: { onClick: MouseEventHandler }) => {
     const isLoggedIn = useSelector(selectIsLoggedIn)
     const user = useSelector((state) => state.auth.user)
+    const meta = useSelector((state) => state.meta)
+
     const pathname = usePathname()
 
     const spinner = <Spinner size={48} strokeWidth={3} className="p-2" />
@@ -21,7 +23,12 @@ export const UserAvatarOrLogin = ({ onClick }: { onClick: MouseEventHandler }) =
 
     if (!isLoggedIn)
         return (
-            <Button className="gap-2" onClick={onClick} buttonType={ButtonType.PRIMARY_NAV}>
+            <Button
+                className={`gap-2 ${
+                    (meta.botOnline === false || meta.nexusOnline === false) && "disabled"
+                }`}
+                onClick={onClick}
+                buttonType={ButtonType.PRIMARY_NAV}>
                 <Discord />
                 Sign In with Discord
             </Button>
