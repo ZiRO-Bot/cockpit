@@ -5,3 +5,11 @@ export default interface Guild {
     invite: string
     icon?: string
 }
+
+export interface DetailedGuild extends Guild {
+    prefixes: string[]
+}
+
+export interface GuildDashboardParams {
+    id: number
+}

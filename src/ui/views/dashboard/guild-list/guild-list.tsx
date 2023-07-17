@@ -32,7 +32,9 @@ const GuildListView = () => {
                                     <div className="w-full flex gap-2 justify-between items-center">
                                         <a className="align-start truncate">{guild.name}</a>
                                         <Button
-                                            href={guild.bot ? "#" : guild.invite}
+                                            href={
+                                                guild.bot ? `/dashboard/${guild.id}` : guild.invite
+                                            }
                                             buttonType={
                                                 guild.bot ? ButtonType.PRIMARY : ButtonType.GRAY
                                             }>
