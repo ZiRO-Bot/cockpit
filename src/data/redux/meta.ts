@@ -11,7 +11,7 @@ const initialState: MetaState = {
 }
 
 export const metaSlice = createSlice({
-    name: "counter",
+    name: "meta",
     initialState,
     reducers: {
         setBotOnlineStatus: (state, newStatus: PayloadAction<boolean>) => {

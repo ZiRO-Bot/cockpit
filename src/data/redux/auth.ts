@@ -1,6 +1,6 @@
 import { LoadingState, LoadingStateType } from "@/model/loading"
 import User from "@/model/user"
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
+import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import { getCookie } from "cookies-next"
 import { fetchUser as _fUser } from "../api/user"
 import type { RootState } from "../store"
@@ -29,6 +29,9 @@ export const authSlice = createSlice({
         fetchFromCookie: (state) => {
             state.isLoggedIn = (getCookie("loggedIn") as boolean | undefined) || false
         },
+        setIsLoggedIn: (state, newState: PayloadAction<boolean>) => {
+            state.isLoggedIn = newState.payload
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -45,7 +48,7 @@ export const authSlice = createSlice({
     },
 })
 
-export const { fetchFromCookie } = authSlice.actions
+export const { fetchFromCookie, setIsLoggedIn } = authSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectIsLoggedIn = (state: RootState) => state.auth.isLoggedIn
