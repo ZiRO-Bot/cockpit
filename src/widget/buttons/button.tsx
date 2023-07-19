@@ -12,6 +12,7 @@ interface ButtonProps extends AriaAttributes {
     padding?: String
     href?: string
     onClick?: MouseEventHandler
+    scroll?: boolean
 }
 
 const Button = ({
@@ -21,6 +22,7 @@ const Button = ({
     href = undefined,
     padding = undefined,
     onClick = undefined,
+    scroll = false,
     ...args
 }: ButtonProps) => {
     const isNav = buttonType <= ButtonType.NAV
@@ -65,7 +67,7 @@ const Button = ({
             {children}
         </button>
     ) : (
-        <Link className={className} href={href} {...args}>
+        <Link className={className} href={href} scroll={scroll} {...args}>
             {children}
         </Link>
     )
