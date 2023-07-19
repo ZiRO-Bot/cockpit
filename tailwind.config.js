@@ -42,6 +42,10 @@ module.exports = {
         },
         {
             pattern: /bg-[^/]+/,
+            variants: ["dark"],
+        },
+        {
+            pattern: /bg-opacity-.+/,
             variants: ["dark", "hover", "dark:hover"],
         },
         {

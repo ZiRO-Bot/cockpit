@@ -40,7 +40,7 @@ const Button = ({
             break
         case ButtonType.NAV:
             builder +=
-                "font-bold [&:not(.disabled)]:hover:bg-gray-200 dark:[&:not(.disabled)]:hover:bg-gray-50/[0.1]"
+                "font-bold bg-opacity-0 dark:bg-opacity-0 [&:not(.disabled)]:hover:bg-opacity-60 bg-gray-300 dark:[&:not(.disabled)]:hover:bg-opacity-10 dark:bg-gray-50"
             break
         case ButtonType.PRIMARY_NAV:
         case ButtonType.PRIMARY:
