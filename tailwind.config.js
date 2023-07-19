@@ -41,7 +41,7 @@ module.exports = {
             variants: ["dark"],
         },
         {
-            pattern: /bg-.+/,
+            pattern: /bg-[^/]+/,
             variants: ["dark", "hover", "dark:hover"],
         },
         {
