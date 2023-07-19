@@ -42,7 +42,7 @@ module.exports = {
         },
         {
             pattern: /bg-.+/,
-            variants: ["dark", "hover"],
+            variants: ["dark", "hover", "dark:hover"],
         },
         {
             pattern: /p(x|y)?-.+/,
