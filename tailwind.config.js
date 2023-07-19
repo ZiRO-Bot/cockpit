@@ -41,6 +41,10 @@ module.exports = {
             variants: ["dark"],
         },
         {
+            pattern: /bg-.+/,
+            variants: ["dark", "hover"],
+        },
+        {
             pattern: /p(x|y)?-.+/,
         },
         "cursor-pointer",
