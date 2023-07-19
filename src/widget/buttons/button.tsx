@@ -22,7 +22,7 @@ const Button = ({
     href = undefined,
     padding = undefined,
     onClick = undefined,
-    scroll = false,
+    scroll = true,
     ...args
 }: ButtonProps) => {
     const isNav = buttonType <= ButtonType.NAV
