@@ -1,6 +1,7 @@
-import { selectIsLoggedIn } from "@/data/redux/auth"
+import { logOut } from "@/data/api/user"
+import { selectIsLoggedIn, setIsLoggedIn } from "@/data/redux/auth"
 import { COMMON_TW } from "@/lib/constants"
-import { useSelector } from "@/lib/hooks/typed-redux"
+import { useDispatch, useSelector } from "@/lib/hooks/typed-redux"
 import ButtonType from "@/model/enum/button-type"
 import { LoadingStateType } from "@/model/loading"
 import { LogOut } from "lucide-react"
@@ -12,6 +13,7 @@ import { Spinner } from "../spinner"
 
 export const UserAvatarOrLogin = ({ onClick }: { onClick: MouseEventHandler }) => {
     const isLoggedIn = useSelector(selectIsLoggedIn)
+    const dispatch = useDispatch()
     const user = useSelector((state) => state.auth.user)
     const meta = useSelector((state) => state.meta)
 
@@ -70,7 +72,11 @@ export const UserAvatarOrLogin = ({ onClick }: { onClick: MouseEventHandler }) =
                     className="flex items-center gap-2"
                     buttonType={ButtonType.DROPDOWN}
                     padding="p-2"
-                    href="#">
+                    onClick={() =>
+                        logOut().then(() => {
+                            dispatch(setIsLoggedIn(false))
+                        })
+                    }>
                     <LogOut size={20} strokeWidth={2.5} />
                     Log out
                 </Button>
