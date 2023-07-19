@@ -56,7 +56,7 @@ export const UserAvatarOrLogin = ({ onClick }: { onClick: MouseEventHandler }) =
             </summary>
             <div className="absolute min-w-[12rem] m-4 right-0 left-auto backdrop-blur p-4 rounded-xl bg-white/60 dark:bg-dark/60 shadow-border-like-btn dark:shadow-border-like-dark-btn z-[100]">
                 <Button
-                    className="flex flex-col gap-1"
+                    className="flex flex-col gap-1 w-full"
                     buttonType={
                         pathname.startsWith("/dashboard")
                             ? ButtonType.ACTIVE_DROPDOWN
@@ -69,7 +69,7 @@ export const UserAvatarOrLogin = ({ onClick }: { onClick: MouseEventHandler }) =
                 </Button>
                 <hr className="my-2 border-gray-400/[0.5] dark:border-gray-500/[0.5]" />
                 <Button
-                    className="flex items-center gap-2"
+                    className="flex items-center gap-2 w-full"
                     buttonType={ButtonType.DROPDOWN}
                     padding="p-2"
                     onClick={() =>
