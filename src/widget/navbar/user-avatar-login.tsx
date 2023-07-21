@@ -1,17 +1,19 @@
+"use client"
+
 import { logOut } from "@/data/api/user"
 import { selectIsLoggedIn, setIsLoggedIn } from "@/data/redux/auth"
-import { COMMON_TW } from "@/lib/constants"
+import { COMMON_TW, FAILED_AUTH, SUCCESS_AUTH } from "@/lib/constants"
 import { useDispatch, useSelector } from "@/lib/hooks/typed-redux"
 import ButtonType from "@/model/enum/button-type"
 import { LoadingStateType } from "@/model/loading"
 import { LogOut } from "lucide-react"
 import { usePathname } from "next/navigation"
-import { MouseEventHandler } from "react"
+import { useState } from "react"
 import Button from "../buttons/button"
 import Discord from "../icon/discord"
 import { Spinner } from "../spinner"
 
-export const UserAvatarOrLogin = ({ onClick }: { onClick: MouseEventHandler }) => {
+export const UserAvatarOrLogin = () => {
     const isLoggedIn = useSelector(selectIsLoggedIn)
     const dispatch = useDispatch()
     const user = useSelector((state) => state.auth.user)
@@ -23,13 +25,32 @@ export const UserAvatarOrLogin = ({ onClick }: { onClick: MouseEventHandler }) =
 
     if (isLoggedIn === undefined) return spinner
 
+    // -- oauth stuff
+    const [isSigning, setIsSigning] = useState(false)
+    const loginUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/login`
+    const loginHandler = (event: MessageEvent) => {
+        if (event.data.message === SUCCESS_AUTH) {
+            window.location.reload()
+        }
+        if (event.data.message === SUCCESS_AUTH || event.data.message === FAILED_AUTH) {
+            setIsSigning(false)
+            window.removeEventListener("message", loginHandler)
+        }
+    }
+
     if (!isLoggedIn)
         return (
             <Button
                 className={`gap-2 ${
                     (meta.botOnline === false || meta.nexusOnline === false) && "disabled"
                 }`}
-                onClick={onClick}
+                onClick={() => {
+                    if (!isSigning) {
+                        window.addEventListener("message", loginHandler)
+                        setIsSigning(true)
+                    }
+                    window.open(loginUrl, "_blank")
+                }}
                 buttonType={ButtonType.PRIMARY_NAV}>
                 <Discord />
                 Sign In with Discord

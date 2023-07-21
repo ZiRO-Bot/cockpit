@@ -1,6 +1,5 @@
 "use client"
 
-import { FAILED_AUTH, SUCCESS_AUTH } from "@/lib/constants"
 import useDarkMode from "@/lib/hooks/mode"
 import { useSelector } from "@/lib/hooks/typed-redux"
 import ButtonType from "@/model/enum/button-type"
@@ -17,19 +16,6 @@ export const NavBar = () => {
     const [isStuck, setIsStuck] = useState(false)
     const [_, toggleDarkMode] = useDarkMode()
     const pathname = usePathname()
-
-    // -- oauth stuff
-    const [isSigning, setIsSigning] = useState(false)
-    const loginUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/login`
-    const loginHandler = (event: MessageEvent) => {
-        if (event.data.message === SUCCESS_AUTH) {
-            window.location.reload()
-        }
-        if (event.data.message === SUCCESS_AUTH || event.data.message === FAILED_AUTH) {
-            setIsSigning(false)
-            window.removeEventListener("message", loginHandler)
-        }
-    }
 
     // -- some state
     const meta = useSelector((state) => state.meta)
@@ -93,15 +79,7 @@ export const NavBar = () => {
                                 <Moon className="hidden dark:flex" strokeWidth={3} />
                                 <Sun className="dark:hidden flex" strokeWidth={3} />
                             </IconButton>
-                            <UserAvatarOrLogin
-                                onClick={() => {
-                                    if (!isSigning) {
-                                        window.addEventListener("message", loginHandler)
-                                        setIsSigning(true)
-                                    }
-                                    window.open(loginUrl, "_blank")
-                                }}
-                            />
+                            <UserAvatarOrLogin />
                         </div>
                     </div>
                 </nav>
