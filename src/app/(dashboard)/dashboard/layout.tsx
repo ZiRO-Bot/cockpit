@@ -1,12 +1,3 @@
-import { ReactNode } from "react"
+import DashboardLayout from "@/ui/layouts/dashboard"
 
-export default function Layout({ children }: { children: ReactNode }) {
-    return (
-        <>
-            <div>
-                <h1>Hello World</h1>
-                {children}
-            </div>
-        </>
-    )
-}
+export default DashboardLayout

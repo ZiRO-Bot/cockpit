@@ -9,7 +9,8 @@ import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
 import Button from "../buttons/button"
 import IconButton from "../buttons/icon-button"
-import { UserAvatarOrLogin } from "./user-avatar-login"
+import { LandingUserAvatar } from "./user-avatar/landing-user-avatar"
+import { UserAvatarOrLogin } from "./user-avatar/user-avatar-login"
 import Mascot from "/public/mascot.svg"
 
 export const NavBar = () => {
@@ -79,7 +80,9 @@ export const NavBar = () => {
                                 <Moon className="hidden dark:flex" strokeWidth={3} />
                                 <Sun className="dark:hidden flex" strokeWidth={3} />
                             </IconButton>
-                            <UserAvatarOrLogin />
+                            <UserAvatarOrLogin>
+                                <LandingUserAvatar />
+                            </UserAvatarOrLogin>
                         </div>
                     </div>
                 </nav>

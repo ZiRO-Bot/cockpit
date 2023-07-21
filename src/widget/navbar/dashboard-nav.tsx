@@ -2,9 +2,10 @@
 
 import { useSelector } from "@/lib/hooks/typed-redux"
 import { useEffect, useState } from "react"
-import { UserAvatarOrLogin } from "./user-avatar-login"
+import { DashboardUserAvatar } from "./user-avatar/dashboard-user-avatar"
+import { UserAvatarOrLogin } from "./user-avatar/user-avatar-login"
 
-export const NavBar = () => {
+export const DashboardNavBar = () => {
     const [isStuck, setIsStuck] = useState(false)
 
     // -- some state
@@ -42,7 +43,9 @@ export const NavBar = () => {
                     }>
                     <div className="h-16 w-full flex justify-end items-center font-bold">
                         <div className="flex">
-                            <UserAvatarOrLogin />
+                            <UserAvatarOrLogin>
+                                <DashboardUserAvatar />
+                            </UserAvatarOrLogin>
                         </div>
                     </div>
                 </nav>
