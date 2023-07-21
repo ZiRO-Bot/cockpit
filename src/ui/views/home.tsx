@@ -1,13 +1,12 @@
 "use client"
 
 import ButtonType from "@/model/enum/button-type"
-import LandingLayout from "@/ui/layouts/landing"
 import Button from "@/widget/buttons/button"
 import Mascot from "/public/mascot.svg"
 
 const HomeView = ({ inviteLink }: { inviteLink?: string }) => {
     return (
-        <LandingLayout>
+        <>
             <div className="mx-5 mt-12 lg:mt-24 mb-20 lg:mb-32 flex flex-col items-center justify-center">
                 <Mascot
                     alt="The bot (Z3R0)"
@@ -56,7 +55,7 @@ const HomeView = ({ inviteLink }: { inviteLink?: string }) => {
                     </div>
                 </div>
             </div>
-        </LandingLayout>
+        </>
     )
 }
 

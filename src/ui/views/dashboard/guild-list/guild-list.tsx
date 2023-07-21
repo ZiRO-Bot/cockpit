@@ -2,7 +2,6 @@
 
 import { COMMON_TW } from "@/lib/constants"
 import ButtonType from "@/model/enum/button-type"
-import LandingLayout from "@/ui/layouts/landing"
 import ProtectedLayout from "@/ui/layouts/protected"
 import Button from "@/widget/buttons/button"
 import GuildIcon from "@/widget/guild-icon"
@@ -17,7 +16,7 @@ const GuildListView = () => {
     }, [])
 
     return (
-        <ProtectedLayout layout={LandingLayout}>
+        <ProtectedLayout>
             <div className="flex items-center justify-center">
                 <div className="w-64 sm:w-full md:w-5/6 lg:w-2/3 mt-6 mx-8 md:mx-0 gap-6 flex flex-col items-center justify-center">
                     <a className="text-2xl font-bold">Select a server</a>

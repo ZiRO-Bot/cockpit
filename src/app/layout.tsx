@@ -1,10 +1,10 @@
 import { getServerCookie } from "@/lib/server-cookie"
 import Theme from "@/model/enum/theme"
+import "@/style/globals.css"
+import "@/style/normalize.css"
 import RootLayout from "@/ui/layouts/root"
 import { Metadata } from "next"
 import { ReactNode } from "react"
-import "../style/globals.css"
-import "../style/normalize.css"
 
 const title = "Z3R0"
 const description = "An open-source multi-purpose discord bot"
