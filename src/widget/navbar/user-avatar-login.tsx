@@ -23,8 +23,6 @@ export const UserAvatarOrLogin = () => {
 
     const spinner = <Spinner size={48} strokeWidth={3} className="p-2" />
 
-    if (isLoggedIn === undefined) return spinner
-
     // -- oauth stuff
     const [isSigning, setIsSigning] = useState(false)
     const loginUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/login`
@@ -37,6 +35,8 @@ export const UserAvatarOrLogin = () => {
             window.removeEventListener("message", loginHandler)
         }
     }
+
+    if (isLoggedIn === undefined) return spinner
 
     if (!isLoggedIn)
         return (
