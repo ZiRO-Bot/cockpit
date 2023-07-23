@@ -3,6 +3,7 @@
 import store from "@/data/store"
 import useDarkMode from "@/lib/hooks/mode"
 import Theme from "@/model/enum/theme"
+import { AppProgressBar as ProgressBar } from "next-nprogress-bar"
 import { ReactNode } from "react"
 import { Provider } from "react-redux"
 import SubRootLayout from "./subroot"
@@ -28,7 +29,10 @@ export default function RootLayout({
                             rel="stylesheet"
                         />
                     </head>
-                    <body className="font-sans dark:text-white dark:bg-dark">{children}</body>
+                    <body className="font-sans dark:text-white dark:bg-dark">
+                        <ProgressBar />
+                        {children}
+                    </body>
                 </html>
             </SubRootLayout>
         </Provider>
