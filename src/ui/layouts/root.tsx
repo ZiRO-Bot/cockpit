@@ -15,7 +15,7 @@ export default function RootLayout({
     serverTheme?: Theme
     children: ReactNode
 }) {
-    const [theme, toggleDarkMode] = useDarkMode(serverTheme)
+    const [theme, _] = useDarkMode(serverTheme)
 
     return (
         <Provider store={store}>
@@ -30,7 +30,7 @@ export default function RootLayout({
                         />
                     </head>
                     <body className="font-sans dark:text-white dark:bg-dark">
-                        <ProgressBar />
+                        <ProgressBar options={{ showSpinner: false }} shallowRouting />
                         {children}
                     </body>
                 </html>
