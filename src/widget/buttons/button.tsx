@@ -13,6 +13,13 @@ interface ButtonProps extends AriaAttributes {
     href?: string
     onClick?: MouseEventHandler
     scroll?: boolean
+    layout?: ({
+        children,
+        className = "",
+    }: {
+        children: ReactNode
+        className: string
+    }) => JSX.Element
 }
 
 const Button = ({
@@ -23,6 +30,7 @@ const Button = ({
     padding = undefined,
     onClick = undefined,
     scroll = true,
+    layout = undefined,
     ...args
 }: ButtonProps) => {
     const isNav = buttonType <= ButtonType.NAV
@@ -62,6 +70,12 @@ const Button = ({
             break
     }
     className = `${builder} ${className}`
+
+    if (layout) {
+        const Layout = layout
+        return <Layout className={className}>{children}</Layout>
+    }
+
     return href === undefined ? (
         <button className={className} onClick={onClick} {...args}>
             {children}

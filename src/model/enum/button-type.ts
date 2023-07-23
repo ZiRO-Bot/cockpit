@@ -1,4 +1,5 @@
 enum ButtonType {
+    BASE,
     PRIMARY_NAV,
     ACTIVE_NAV,
     NAV,
