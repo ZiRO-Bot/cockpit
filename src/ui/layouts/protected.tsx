@@ -6,17 +6,7 @@ import { Spinner } from "@/widget/spinner"
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 
-const ProtectedLayout = ({
-    children,
-    layout = ({ children }: { children: React.ReactNode }) => {
-        return <>{children}</>
-    },
-}: {
-    children: React.ReactNode
-    layout?: ({ children }: { children: React.ReactNode }) => JSX.Element
-}) => {
-    let Layout = layout
-
+const ProtectedLayout = ({ children }: { children: React.ReactNode }) => {
     const router = useRouter()
     const [isLoading, setIsLoading] = useState(true)
     const isLoggedIn = useSelector(selectIsLoggedIn)
@@ -24,23 +14,20 @@ const ProtectedLayout = ({
     useEffect(() => {
         if (isLoggedIn === undefined) return
         if (!isLoggedIn) {
-            router.back()
+            router.push("/")
             return
         }
         setIsLoading(false)
     }, [isLoggedIn])
 
-    return (
-        <Layout>
-            {isLoading ? (
-                <div className="flex w-full h-full justify-center items-center min-h-screen peer-[.nav]/navbar:min-h-[calc(100vh-4rem)]">
-                    <Spinner />
-                </div>
-            ) : (
-                children
-            )}
-        </Layout>
-    )
+    if (isLoading)
+        return (
+            <div className="flex w-full h-full justify-center items-center min-h-screen peer-[.nav]/navbar:min-h-[calc(100vh-4rem)]">
+                <Spinner />
+            </div>
+        )
+
+    return children
 }
 
 export default ProtectedLayout

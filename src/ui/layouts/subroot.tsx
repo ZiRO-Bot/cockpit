@@ -12,18 +12,17 @@ export default function SubRootLayout({ children }: { children: React.ReactNode 
 
     useEffect(() => {
         if (isLoggedIn === undefined) {
-            pingNexus().then(
-                (ping) => {
+            pingNexus()
+                .then((ping) => {
                     dispatch(fetchFromCookie())
                     dispatch(setBotOnlineStatus(ping.botPing !== null))
                     dispatch(setNexusOnlineStatus(true))
-                },
-                () => {
+                })
+                .catch(() => {
                     dispatch(setIsLoggedIn(false))
                     dispatch(setBotOnlineStatus(false))
                     dispatch(setNexusOnlineStatus(false))
-                },
-            )
+                })
         }
     }, [])
 

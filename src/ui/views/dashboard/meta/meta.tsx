@@ -4,7 +4,6 @@ import { fetchGuildStats, manageGuildPrefix } from "@/data/api/guild"
 import { COMMON_TW } from "@/lib/constants"
 import { FetchMethodType } from "@/model/enum/meta"
 import { GuildDashboardParams } from "@/model/guild"
-import ProtectedLayout from "@/ui/layouts/protected"
 import Button from "@/widget/buttons/button"
 import { Spinner } from "@/widget/spinner"
 import { FormEvent, useEffect, useState } from "react"
@@ -38,7 +37,7 @@ const MetaView = ({ params }: { params: GuildDashboardParams }) => {
 
     if (!prefixes) return <Spinner />
     return (
-        <ProtectedLayout>
+        <>
             <div>
                 <div>
                     {prefixes.length >= 1 ? (
@@ -76,7 +75,7 @@ const MetaView = ({ params }: { params: GuildDashboardParams }) => {
                     <Button>Add</Button>
                 </form>
             </div>
-        </ProtectedLayout>
+        </>
     )
 }
 
