@@ -3,23 +3,26 @@
 import store from "@/data/store"
 import useDarkMode from "@/lib/hooks/mode"
 import Theme from "@/model/enum/theme"
+import Ping from "@/model/ping"
 import { AppProgressBar as ProgressBar } from "next-nprogress-bar"
 import { ReactNode } from "react"
 import { Provider } from "react-redux"
 import SubRootLayout from "./subroot"
 
 export default function RootLayout({
-    serverTheme,
     children,
+    nexusPing, // hopefully the only prop drilling I have to do
+    serverTheme,
 }: {
-    serverTheme?: Theme
     children: ReactNode
+    nexusPing?: Ping
+    serverTheme?: Theme
 }) {
     const [theme, _] = useDarkMode(serverTheme)
 
     return (
         <Provider store={store}>
-            <SubRootLayout>
+            <SubRootLayout nexusPing={nexusPing}>
                 <html className={theme === Theme.DARK ? "dark" : ""} lang="en">
                     <head>
                         <link rel="preconnect" href="https://fonts.googleapis.com" />

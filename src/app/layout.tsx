@@ -1,3 +1,4 @@
+import { pingNexus } from "@/data/api/meta"
 import { getServerCookie } from "@/lib/server-cookie"
 import Theme from "@/model/enum/theme"
 import "@/style/globals.css"
@@ -28,7 +29,12 @@ export const metadata: Metadata = {
     },
 }
 
-export default function Layout({ children }: { children: ReactNode }) {
+export default async function Layout({ children }: { children: ReactNode }) {
     const theme = getServerCookie("theme") as Theme | undefined
-    return <RootLayout serverTheme={theme}>{children}</RootLayout>
+    const nexusPing = await pingNexus()
+    return (
+        <RootLayout serverTheme={theme} nexusPing={nexusPing}>
+            {children}
+        </RootLayout>
+    )
 }
