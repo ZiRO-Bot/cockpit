@@ -23,7 +23,9 @@ const GuildListView = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 ${COMMON_TW.BORDER_LIKE_SHADOW_BTN}">
                         {[...viewModel.guilds]
                             .sort((a, b) => b.name.localeCompare(a.name))
-                            .sort((a, b) => (a.bot ? 0 : 1))
+                            .sort((a, b) =>
+                                a.bot ? (b.bot ? a.name.localeCompare(b.name) : 0) : 1,
+                            )
                             .map((guild) => {
                                 return (
                                     <div
