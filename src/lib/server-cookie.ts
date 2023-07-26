@@ -3,8 +3,8 @@
 import { OptionsType } from "cookies-next/lib/types"
 import { cookies } from "next/headers"
 
-export const getServerCookie = (key: string) => {
-    return cookies().get(key)?.value
+export const getServerCookie = (key: string, fallback: string | undefined = undefined) => {
+    return cookies().get(key)?.value || fallback
 }
 
 export const setServerCookie = (key: string, value: any, options?: OptionsType) => {
