@@ -50,7 +50,7 @@ const Button = ({
             break
         case ButtonType.NAV:
             builder +=
-                "font-bold bg-opacity-0 dark:bg-opacity-0 [&:not(.disabled)]:hover:bg-opacity-10 bg-dark dark:bg-gray-50"
+                "font-bold bg-opacity-0 dark:bg-opacity-0 [&:not(.disabled)]:hover:bg-opacity-10 bg-dark dark:bg-gray-200"
             break
         case ButtonType.PRIMARY_NAV:
         case ButtonType.PRIMARY:
@@ -63,10 +63,10 @@ const Button = ({
             builder += `font-bold bg-transparent [&:not(.disabled)]:hover:bg-gray-200/[0.75] dark:[&:not(.disabled)]:hover:bg-gray-50/[0.02] ${COMMON_TW.BORDER_LIKE_SHADOW_BTN}`
             break
         case ButtonType.ACTIVE_DROPDOWN:
-            builder += "bg-gray-400/[0.25] dark:bg-gray-500/[0.3]"
+            builder += "bg-gray-400/[0.3] dark:bg-gray-500/[0.3]"
         case ButtonType.DROPDOWN:
             builder +=
-                " font-semibold [&:not(.disabled)]:hover:bg-gray-600/[0.1] dark:[&:not(.disabled)]:hover:bg-gray-50/[0.1] text-black dark:text-white"
+                " font-semibold [&:not(.disabled)]:hover:bg-dark/[0.1] dark:[&:not(.disabled)]:hover:bg-gray-200/[0.1] text-black dark:text-white"
             break
     }
     className = `${builder} ${className}`
