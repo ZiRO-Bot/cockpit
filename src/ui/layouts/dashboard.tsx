@@ -29,7 +29,7 @@ export default function DashboardLayout({
     return (
         <DashboardContext.Provider value={{ guildId, setGuildId }}>
             <ProtectedLayout>
-                <div className="grid grid-cols-[20rem_auto]">
+                <div className="w-full grid grid-cols-[20rem_auto]">
                     <aside className="min-h-screen flex flex-col gap-2 px-4">
                         <div className="pt-2 flex justify-between">
                             <div className="flex items-center justify-center gap-1">

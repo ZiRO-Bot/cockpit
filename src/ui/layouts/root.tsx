@@ -33,7 +33,16 @@ export default function RootLayout({
                         />
                     </head>
                     <body className="font-sans dark:text-white dark:bg-dark">
-                        <ProgressBar options={{ showSpinner: false }} shallowRouting />
+                        <ProgressBar
+                            options={{
+                                showSpinner: false,
+                                trickle: false,
+                                template:
+                                    '<div class="absolute h-1 bg-sky-500 top-0 left-0 right-0 z-[1031]" role="bar"></div>',
+                                positionUsing: "translate",
+                                parent: "html",
+                            }}
+                        />
                         {children}
                     </body>
                 </html>
