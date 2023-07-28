@@ -25,7 +25,7 @@ const GuildListView = () => {
                                       a.bot ? (b.bot ? a.name.localeCompare(b.name) : 0) : 1,
                                   )
                                   .map((guild) => <GuildCard guild={guild} />)
-                            : Array.from(Array(6).keys()).map(() => <GuildCard />)}
+                            : Array.from(Array(8).keys()).map(() => <GuildCard />)}
                     </div>
                 </div>
             </div>

@@ -9,7 +9,7 @@ const GuildCard = ({ guild = undefined }: { guild?: Guild }) => {
         <div
             className={`p-4 rounded-xl flex flex-col justify-center items-center gap-4 ${COMMON_TW.BORDER_LIKE_SHADOW_BTN}`}>
             <GuildIcon
-                className="animate-pulse bg-gray-400 dark:bg-gray-600"
+                className={guild ? "" : "animate-pulse bg-gray-400 dark:bg-gray-600"}
                 size={128}
                 guild={guild}
             />
