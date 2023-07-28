@@ -69,7 +69,7 @@ const Button = ({
                 " font-semibold [&:not(.disabled)]:hover:bg-dark/[0.1] dark:[&:not(.disabled)]:hover:bg-gray-200/[0.1] text-black dark:text-white"
             break
     }
-    className = `${builder} ${className}`
+    className = `${className} ${builder}`
 
     if (layout) {
         const Layout = layout

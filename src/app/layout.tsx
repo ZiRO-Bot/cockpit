@@ -31,7 +31,8 @@ export const metadata: Metadata = {
 
 export default async function Layout({ children }: { children: ReactNode }) {
     const theme = getServerCookie("theme") as Theme | undefined
-    const nexusPing = await pingNexus()
+    let nexusPing = undefined
+    if (!nexusPing) nexusPing = await pingNexus()
     return (
         <RootLayout serverTheme={theme} nexusPing={nexusPing}>
             {children}

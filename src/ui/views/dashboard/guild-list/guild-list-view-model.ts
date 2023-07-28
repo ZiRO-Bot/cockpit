@@ -5,17 +5,17 @@ import Guild from "@/model/guild"
 import { useState } from "react"
 
 interface GuildListViewModel {
-    guilds: Guild[]
+    guilds: Guild[] | undefined
     fetchManagedGuilds: () => void
 }
 
 const useGuildListViewModel: () => GuildListViewModel = () => {
-    const [guilds, setGuilds] = useState([] as Guild[])
+    const [guilds, setGuilds] = useState(undefined as Guild[] | undefined)
     const isLoggedIn = useSelector(selectIsLoggedIn)
 
     const fetchManagedGuilds = () => {
         if (!isLoggedIn) return
-        if (guilds.length <= 0) _fManagedGuilds().then((guilds) => setGuilds(guilds))
+        if (!guilds) _fManagedGuilds().then((guilds) => setGuilds(guilds))
     }
 
     return {
