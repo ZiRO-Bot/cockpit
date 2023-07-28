@@ -9,7 +9,7 @@ export const fetchManagedGuilds = async (): Promise<Guild[]> => {
 }
 
 export const fetchGuildStats = async (guildId: number): Promise<DetailedGuild> => {
-    const resp = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/v2/guild/${guildId}/stats`, {
+    const resp = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/v2/guilds/${guildId}/stats`, {
         credentials: "include",
     })
     return await resp.json()
@@ -20,7 +20,7 @@ export const manageGuildPrefix = async (
     prefix: string,
     type: FetchMethodType,
 ): Promise<DetailedGuild> => {
-    const resp = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/v2/guild/${guildId}/prefix`, {
+    const resp = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/v2/guilds/${guildId}/prefix`, {
         method: type,
         credentials: "include",
         body: JSON.stringify({
